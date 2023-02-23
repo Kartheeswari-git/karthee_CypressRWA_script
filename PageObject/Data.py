@@ -19,12 +19,13 @@ bankTransfer_data={
     'transactionType':'payment',
     'comments':"Send you the share",
     'bankname_xpected':'Axis Bank',
+    'bankname1': 'Canara Bank',
     'account_number_xpected':'975318642',
     'routing_number_xpected':'987654321',
 
 }
 signup_data={
-    'firstName':'Karthee',
+    'firstName':'Karthee1',
     'lastName':'S',
     'username':'kartheeswari1311@gmail.com',
     'password':'Welcome123#',
@@ -43,4 +44,12 @@ Validation_msg={
     'pwd_empty':'Enter your password',
     'confirm_pwd_wrong':'Password does not match',
     'confirm_pwd_empty':'Confirm your password',
+    'bank_name_empty':'Enter a bank name',
+    'bank_invalid':'Must contain at least 5 characters',
+    'routing_num_empty': 'Enter a valid bank routing number',
+    'routing_num_invalid': 'Must contain a valid routing number',
+    'acnum_name_empty': 'Enter a valid bank account number',
+    'acnum_invalid': 'Must contain at least 9 digits',
+
 }
+

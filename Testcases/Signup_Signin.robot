@@ -37,15 +37,15 @@ Signin-002:SigninPage Fieldlevel Validation
 
 Signin-003:SigninPage Credential Validation
     [Tags]  Signin-003:Invalid Credentials validation
-    Signin_FieldLevel_Validation        ${Signin_data}[invalid_un]   ${Signin_data}[invalid_pwd]
+    Signin        ${Signin_data}[invalid_un]   ${Signin_data}[invalid_pwd]
     sleep       5s
     page should contain      Username or password is invalid
-    Signin_FieldLevel_Validation       ${Signin_data}[valid_un]   ${Signin_data}[invalid_pwd]
+    Signin       ${Signin_data}[valid_un]   ${Signin_data}[invalid_pwd]
     sleep       5s
     page should contain      Username or password is invalid
 
 Signin-004:SigninPage Validation
     [Tags]  Signin-004:Valid Credentials validation
-    Signin_FieldLevel_Validation      ${signup_data}[firstName]   ${signup_data}[password]
+    Signin    ${signup_data}[firstName]   ${signup_data}[password]
     verify_signin
     close browser

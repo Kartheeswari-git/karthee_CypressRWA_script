@@ -53,7 +53,7 @@ w/o_un_pwd
    click element    ${signin}[signin_btn]
    page should contain element      //*[@data-test="signin-username"]//p[text()="Username is required"]
 
-Signin_FieldLevel_Validation
+Signin
     [Arguments]     ${uname}        ${pwd}
    input text        //*[@id="username"]      ${uname}
    input password       //*[@id="password"]       ${pwd}
