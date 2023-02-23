@@ -2,8 +2,8 @@
 Library     Selenium2Library
 Library     RequestsLibrary
 Library     Collections
-Variables   ../../PageObject/Data.py
-Resource   ../../Resouces/API_resources.robot
+Variables   ../PageObject/Data.py
+Resource   ../Resouces/API_resources.robot
 
 *** Variables ***
 

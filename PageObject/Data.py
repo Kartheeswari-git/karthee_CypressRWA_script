@@ -1,6 +1,7 @@
 Signin_data={
-    'base_url': 'http://localhost:3001',
+    'signin_url': 'http://localhost:3000/signin',
     'signup':'http://localhost:3000/signup',
+    'base_url':'http://localhost:3001',
     'invalid_un':'iuyfx',
     'invalid_pwd':'ghbghjkj',
     'valid_un': 'kartheeswari1311@gmail.com',
@@ -32,4 +33,14 @@ signup_data={
     'firstName1': 'Edgar',
     'lastName1': 'Johns',
     'firstName2':'Arely',
+    'invalid_pwd':'ab'
+}
+Validation_msg={
+    'fname_empty':'First Name is required',
+    'lname_empty':'Last Name is required',
+    'uname_empty':'Username is required',
+    'pwd_invalid_msg':'Password must contain at least 4 characters',
+    'pwd_empty':'Enter your password',
+    'confirm_pwd_wrong':'Password does not match',
+    'confirm_pwd_empty':'Confirm your password',
 }
