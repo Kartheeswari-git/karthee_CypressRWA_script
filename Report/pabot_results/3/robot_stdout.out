@@ -1,0 +1,42 @@
+==============================================================================
+Suites                                                                        
+==============================================================================
+Suites.Api Users                                                              
+==============================================================================
+AU-001: Get_Users_List                                                <Response [200]>
+| PASS |
+------------------------------------------------------------------------------
+AU_002: Error on invalid user                                           
+  Traceback (most recent call last):
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_users.robot:14
+    T:  AU_002: Error on invalid user    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_users.robot:16
+      get_invalid_user    
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Resources\API_resources.robot:208
+          
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    File  C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Resources\API_resources.robot:209
+      GET On Session    session2    users/jdgjhfjgh
+______________________________________________________________________________
+| PASS |
+------------------------------------------------------------------------------
+AU-003: Get_a_user_details                                            | PASS |
+------------------------------------------------------------------------------
+AU-004: Get_user_profile_by_username                                  | PASS |
+------------------------------------------------------------------------------
+AU-005: Get_user_profile_by_email                                     | PASS |
+------------------------------------------------------------------------------
+AU-006: Get_user_profile_by_phone_num                                 | PASS |
+------------------------------------------------------------------------------
+AU-007: Get_users_profile_by_username                                 | PASS |
+------------------------------------------------------------------------------
+Suites.Api Users                                                      | PASS |
+7 tests, 7 passed, 0 failed
+==============================================================================
+Suites                                                                | PASS |
+7 tests, 7 passed, 0 failed
+==============================================================================
+Output:  C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Report\pabot_results\3\output.xml

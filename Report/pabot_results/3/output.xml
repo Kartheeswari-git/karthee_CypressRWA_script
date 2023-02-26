@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.661" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Api Users" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_users.robot">
+<test id="s1-s1-t1" name="AU-001: Get_Users_List" line="9">
+<kw name="login_api1" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[uname]</arg>
+<arg>password=${signup_data}[pwd]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.358" level="INFO">${body} = {'username': 'Katharina_Bernier', 'password': 's3cret', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.357" endtime="20230227 00:10:55.358"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:55.364" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:55.359" endtime="20230227 00:10:55.365"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.367" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.366" endtime="20230227 00:10:55.367"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.821" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '53', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=Katharina_Bernier&amp;password=s3cret&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:55.822" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-n59fS1zaigja5r3RwFxL0w8NIi0"', 'Set-Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":368137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.822" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.367" endtime="20230227 00:10:55.822"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:55.823" endtime="20230227 00:10:55.823"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.327" endtime="20230227 00:10:55.823"/>
+</kw>
+<kw name="get_all_users" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_all_user}</var>
+<arg>session2</arg>
+<arg>users</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.936" level="INFO">GET Request : url=http://localhost:3001/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.937" level="INFO">GET Response : url=http://localhost:3001/users 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2818', 'ETag': 'W/"b02-bVD29p2k899FlnQbe8UA1dvJcJ0"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"},{"id":"bDjUb4ir5O","uuid":"b4ebe114-141c-4397-9346-dd37d788f71b","firstName":"Kaylin","lastName":"Homenick","username":"Allie2","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Rebeca35@yahoo.com","phoneNumber":"072-208-4283","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","defaultPrivacyLevel":"private","balance":164867,"createdAt":"2019-09-15T04:44:05.536Z","modifiedAt":"2020-05-21T18:25:10.341Z"},{"id":"24VniajY1y","uuid":"0b00a187-6cf6-4d34-8f59-b8a8eabdddf6","firstName":"Ibrahim","lastName":"Dickens","username":"Giovanna74","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Pearl56@gmail.com","phoneNumber":"974-916-8746","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","defaultPrivacyLevel":"private","balance":145779,"createdAt":"2020-03-06T02:15:42.584Z","modifiedAt":"2020-05-21T09:25:42.974Z"},{"id":"tsHF6_D5oQ","uuid":"53315353-7ca6-4cd1-8fd6-af9fb5a9dd25","firstName":"Devon","lastName":"Becker","username":"Jessyca.Kuhic","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Jordy37@yahoo.com","phoneNumber":"277-189-3402","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","defaultPrivacyLevel":"contacts","balance":75369,"createdAt":"2020-02-11T21:26:46.510Z","modifiedAt":"2020-05-21T15:15:33.944Z"},{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"},{"id":"hiz3BtOQ_F","uuid":"74790bae-20c4-404d-8a35-79d43da8eefa","firstName":"Karthee1","lastName":"Johns","username":"Karthee1","password":"$2a$10$JdsMg2yKnrBAudUEHG6X2.hYeWI.yAO7w48EE5ZbXkE7PIfbsFAJi","balance":0,"createdAt":"2023-02-26T18:36:14.985Z","modifiedAt":"2023-02-26T18:36:14.985Z"},{"id":"K5k5zQA2X","uuid":"509836c8-b3ee-41cc-9caf-cf7202d24a15","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$69fyNMZdIOY5YoYHstARuuH.uOCAPrSVhG5lylTASXMw/B1qPTo4W","balance":0,"createdAt":"2023-02-26T18:40:55.521Z","modifiedAt":"2023-02-26T18:40:55.521Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.938" level="INFO">${get_all_user} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.824" endtime="20230227 00:10:55.938"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_all_user.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.939" level="INFO">Length is 7</msg>
+<msg timestamp="20230227 00:10:55.939" level="INFO">${total_data} = 7</msg>
+<status status="PASS" starttime="20230227 00:10:55.938" endtime="20230227 00:10:55.939"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.939" endtime="20230227 00:10:55.940"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.824" endtime="20230227 00:10:55.940"/>
+</kw>
+<tag>AU-001: Gets a list of users</tag>
+<status status="PASS" starttime="20230227 00:10:55.326" endtime="20230227 00:10:55.941"/>
+</test>
+<test id="s1-s1-t2" name="AU_002: Error on invalid user" line="14">
+<kw name="get_invalid_user" library="API_resources">
+<try>
+<branch type="TRY">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user}</var>
+<arg>session2</arg>
+<arg>users/jdgjhfjgh</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.956" level="INFO">GET Request : url=http://localhost:3001/users/jdgjhfjgh 
+ path_url=/users/jdgjhfjgh 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.956" level="INFO">GET Response : url=http://localhost:3001/users/jdgjhfjgh 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '24', 'ETag': 'W/"18-XPDV80vbMk4yY1/PADG4jYM4rSI"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"error":"Unauthorized"} 
+ </msg>
+<msg timestamp="20230227 00:10:55.958" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: http://localhost:3001/users/jdgjhfjgh</msg>
+<status status="FAIL" starttime="20230227 00:10:55.943" endtime="20230227 00:10:56.071"/>
+</kw>
+<status status="FAIL" starttime="20230227 00:10:55.943" endtime="20230227 00:10:56.072"/>
+</branch>
+<branch type="EXCEPT">
+<kw name="Status Should Be" library="RequestsLibrary">
+<arg>401</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" starttime="20230227 00:10:56.073" endtime="20230227 00:10:56.074"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.073" endtime="20230227 00:10:56.074"/>
+</branch>
+<status status="PASS" starttime="20230227 00:10:55.943" endtime="20230227 00:10:56.074"/>
+</try>
+<status status="PASS" starttime="20230227 00:10:55.942" endtime="20230227 00:10:56.074"/>
+</kw>
+<tag>AU-002: Error on invalid user</tag>
+<status status="PASS" starttime="20230227 00:10:55.941" endtime="20230227 00:10:56.075"/>
+</test>
+<test id="s1-s1-t3" name="AU-003: Get_a_user_details" line="18">
+<kw name="get_a_user" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user}</var>
+<arg>session2</arg>
+<arg>users/t45AiwidW</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.150" level="INFO">GET Request : url=http://localhost:3001/users/t45AiwidW 
+ path_url=/users/t45AiwidW 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.150" level="INFO">GET Response : url=http://localhost:3001/users/t45AiwidW 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-n59fS1zaigja5r3RwFxL0w8NIi0"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":368137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.150" level="INFO">${get_a_user} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.077" endtime="20230227 00:10:56.150"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_a_user.json()['user']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.151" level="INFO">Length is 13</msg>
+<msg timestamp="20230227 00:10:56.152" level="INFO">${total_data} = 13</msg>
+<status status="PASS" starttime="20230227 00:10:56.150" endtime="20230227 00:10:56.152"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}==1</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.152" endtime="20230227 00:10:56.153"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.076" endtime="20230227 00:10:56.153"/>
+</kw>
+<tag>AU-003: Get a user details</tag>
+<status status="PASS" starttime="20230227 00:10:56.076" endtime="20230227 00:10:56.153"/>
+</test>
+<test id="s1-s1-t4" name="AU-004: Get_user_profile_by_username" line="22">
+<kw name="get_profile_by_username" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user}</var>
+<arg>session2</arg>
+<arg>users/profile/Katharina_Bernier</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.161" level="INFO">GET Request : url=http://localhost:3001/users/profile/Katharina_Bernier 
+ path_url=/users/profile/Katharina_Bernier 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.161" level="INFO">GET Response : url=http://localhost:3001/users/profile/Katharina_Bernier 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '126', 'ETag': 'W/"7e-N7zFthpo3nF2cxnuo8ezxfeXIek"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"firstName":"Edgar","lastName":"Johns","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg"}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.161" level="INFO">${get_a_user} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.155" endtime="20230227 00:10:56.161"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_a_user.json()['user']['firstName']}'=='${signup_data}[firstName1]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.162" endtime="20230227 00:10:56.165"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_a_user.json()['user']['lastName']}'=='${signup_data}[lastName1]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.165" endtime="20230227 00:10:56.169"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.155" endtime="20230227 00:10:56.169"/>
+</kw>
+<tag>AU-004: Get user profile by username</tag>
+<status status="PASS" starttime="20230227 00:10:56.154" endtime="20230227 00:10:56.169"/>
+</test>
+<test id="s1-s1-t5" name="AU-005: Get_user_profile_by_email" line="26">
+<kw name="get_user_upon_search_params" library="API_resources">
+<arg>Aniya_Powlowski36%40hotmail.com</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user_by_search}</var>
+<arg>session2</arg>
+<arg>users/search</arg>
+<arg>params=q=${searchdata}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.325" level="INFO">GET Request : url=http://localhost:3001/users/search?q=Aniya_Powlowski36%40hotmail.com 
+ path_url=/users/search?q=Aniya_Powlowski36%40hotmail.com 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.325" level="INFO">GET Response : url=http://localhost:3001/users/search?q=Aniya_Powlowski36%40hotmail.com 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '500', 'ETag': 'W/"1f4-KxmHmURxB5Ts+YO5fbCwOHyE5NU"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.325" level="INFO">${get_a_user_by_search} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.171" endtime="20230227 00:10:56.325"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_a_user_by_search.json()['results'][0]['firstName']}'=='${signup_data}[firstName2]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.326" endtime="20230227 00:10:56.328"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.170" endtime="20230227 00:10:56.328"/>
+</kw>
+<tag>AU-005: Get user profile by email</tag>
+<status status="PASS" starttime="20230227 00:10:56.170" endtime="20230227 00:10:56.328"/>
+</test>
+<test id="s1-s1-t6" name="AU-006: Get_user_profile_by_phone_num" line="30">
+<kw name="get_user_upon_search_params" library="API_resources">
+<arg>537-041-4355</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user_by_search}</var>
+<arg>session2</arg>
+<arg>users/search</arg>
+<arg>params=q=${searchdata}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.338" level="INFO">GET Request : url=http://localhost:3001/users/search?q=537-041-4355 
+ path_url=/users/search?q=537-041-4355 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.339" level="INFO">GET Response : url=http://localhost:3001/users/search?q=537-041-4355 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '500', 'ETag': 'W/"1f4-KxmHmURxB5Ts+YO5fbCwOHyE5NU"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.339" level="INFO">${get_a_user_by_search} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.331" endtime="20230227 00:10:56.339"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_a_user_by_search.json()['results'][0]['firstName']}'=='${signup_data}[firstName2]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.340" endtime="20230227 00:10:56.342"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.330" endtime="20230227 00:10:56.342"/>
+</kw>
+<tag>AU-006: Get user profile by phone_num</tag>
+<status status="PASS" starttime="20230227 00:10:56.330" endtime="20230227 00:10:56.342"/>
+</test>
+<test id="s1-s1-t7" name="AU-007: Get_users_profile_by_username" line="34">
+<kw name="get_user_upon_search_params" library="API_resources">
+<arg>Tavares_Barrows</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_a_user_by_search}</var>
+<arg>session2</arg>
+<arg>users/search</arg>
+<arg>params=q=${searchdata}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.351" level="INFO">GET Request : url=http://localhost:3001/users/search?q=Tavares_Barrows 
+ path_url=/users/search?q=Tavares_Barrows 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ApTNbtrn8kahX5Gimr5qld8lqPvN0ooO8.6LupVnKsnK%2FLhH1m5fcoms2jm730bJT%2BMpI%2FkfuRtGU'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.351" level="INFO">GET Response : url=http://localhost:3001/users/search?q=Tavares_Barrows 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '500', 'ETag': 'W/"1f4-KxmHmURxB5Ts+YO5fbCwOHyE5NU"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.351" level="INFO">${get_a_user_by_search} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.344" endtime="20230227 00:10:56.351"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_a_user_by_search.json()['results'][0]['firstName']}'=='${signup_data}[firstName2]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.352" endtime="20230227 00:10:56.354"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.343" endtime="20230227 00:10:56.355"/>
+</kw>
+<tag>AU-007: Get users profile by username</tag>
+<status status="PASS" starttime="20230227 00:10:56.342" endtime="20230227 00:10:56.355"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.697" endtime="20230227 00:10:56.356"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.674" endtime="20230227 00:10:56.357"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">AU-001: Gets a list of users</stat>
+<stat pass="1" fail="0" skip="0">AU-002: Error on invalid user</stat>
+<stat pass="1" fail="0" skip="0">AU-003: Get a user details</stat>
+<stat pass="1" fail="0" skip="0">AU-004: Get user profile by username</stat>
+<stat pass="1" fail="0" skip="0">AU-005: Get user profile by email</stat>
+<stat pass="1" fail="0" skip="0">AU-006: Get user profile by phone_num</stat>
+<stat pass="1" fail="0" skip="0">AU-007: Get users profile by username</stat>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="7" fail="0" skip="0" id="s1-s1" name="Api Users">Suites.Api Users</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

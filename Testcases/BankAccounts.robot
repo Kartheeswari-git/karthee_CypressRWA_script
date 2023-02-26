@@ -32,3 +32,4 @@ BA-004:Create_new_Bank_account
 BA-005:Delete_bank_account
     [Tags]      BA-005:Delete_bank_account
     Delete_bank_ac
+    close browser

@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.640" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Api Banktransfers" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_banktransfers.robot">
+<test id="s1-s1-t1" name="BT-001: Signup_RWA" line="9">
+<kw name="Signup_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>confirmPassword=${signup_data}[password]</arg>
+<arg>firstName=${signup_data}[firstName]</arg>
+<arg>lastName=${signup_data}[lastName]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.345" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'confirmPassword': 'Welcome123#', 'firstName': 'Karthee1', 'lastName': 'S'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.343" endtime="20230227 00:10:55.345"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session1</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:55.345" level="INFO">Creating Session using : alias=session1, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:55.345" endtime="20230227 00:10:55.347"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${signup}</var>
+<arg>session1</arg>
+<arg>users</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.530" level="INFO">POST Request : url=http://localhost:3001/users 
+ path_url=/users 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '120', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;confirmPassword=Welcome123%23&amp;firstName=Karthee1&amp;lastName=S 
+ </msg>
+<msg timestamp="20230227 00:10:55.530" level="INFO">POST Response : url=http://localhost:3001/users 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-40DtI6z4ln2e5u+l61id0m4Q9qU"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"K5k5zQA2X","uuid":"509836c8-b3ee-41cc-9caf-cf7202d24a15","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$69fyNMZdIOY5YoYHstARuuH.uOCAPrSVhG5lylTASXMw/B1qPTo4W","balance":0,"createdAt":"2023-02-26T18:40:55.521Z","modifiedAt":"2023-02-26T18:40:55.521Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.531" level="INFO">${signup} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.349" endtime="20230227 00:10:55.531"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.318" endtime="20230227 00:10:55.531"/>
+</kw>
+<tag>BT-001: Create new user</tag>
+<status status="PASS" starttime="20230227 00:10:55.317" endtime="20230227 00:10:55.531"/>
+</test>
+<test id="s1-s1-t2" name="BT-002: Create_Bank_account" line="13">
+<kw name="login_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.535" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.534" endtime="20230227 00:10:55.536"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:55.537" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:55.536" endtime="20230227 00:10:55.537"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.538" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.537" endtime="20230227 00:10:55.538"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.933" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:55.933" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-PqrpBl/85ffjkHcvb3QgZCtfRNM"', 'Set-Cookie': 'connect.sid=s%3AuDBF-3b9lzjfaXgORVAIxtTfyg8dY3Ov.Is9Qkm5uGEFqqpFbK0U26D1ggXljt2157vD%2F2FtWOj4; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.934" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.538" endtime="20230227 00:10:55.934"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:55.934" endtime="20230227 00:10:55.935"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.533" endtime="20230227 00:10:55.935"/>
+</kw>
+<kw name="create_bank_a/c" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${bank_details}</var>
+<arg>accountNumber=${random_num}</arg>
+<arg>bankName=${bankTransfer_data}[bankname_xpected]</arg>
+<arg>routingNumber=${bankTransfer_data}[routing_number_xpected]</arg>
+<arg>userId=mGYhLxOKD</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.936" level="INFO">${bank_details} = {'accountNumber': 'Generate random string 9 [NUMBERS]', 'bankName': 'Axis Bank', 'routingNumber': '987654321', 'userId': 'mGYhLxOKD'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.936" endtime="20230227 00:10:55.937"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${create_back_ac}</var>
+<arg>session2</arg>
+<arg>bankAccounts</arg>
+<arg>data=${bank_details}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.951" level="INFO">POST Request : url=http://localhost:3001/bankAccounts 
+ path_url=/bankAccounts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AuDBF-3b9lzjfaXgORVAIxtTfyg8dY3Ov.Is9Qkm5uGEFqqpFbK0U26D1ggXljt2157vD%2F2FtWOj4', 'Content-Length': '112', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=accountNumber=Generate+random+string+9+%5BNUMBERS%5D&amp;bankName=Axis+Bank&amp;routingNumber=987654321&amp;userId=mGYhLxOKD 
+ </msg>
+<msg timestamp="20230227 00:10:55.951" level="INFO">POST Response : url=http://localhost:3001/bankAccounts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '299', 'ETag': 'W/"12b-pMN/zmQfkr4Cp/haELzqQTHZqV8"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"account":{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"2023-02-26T18:40:55.944Z","modifiedAt":"2023-02-26T18:40:55.944Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.951" level="INFO">${create_back_ac} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.937" endtime="20230227 00:10:55.951"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.935" endtime="20230227 00:10:55.951"/>
+</kw>
+<tag>BT-002: Create_Bank_account</tag>
+<status status="PASS" starttime="20230227 00:10:55.532" endtime="20230227 00:10:55.951"/>
+</test>
+<test id="s1-s1-t3" name="BT-003: Get_Bank_account_details" line="18">
+<kw name="get_all_bank_a/cs" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_all}</var>
+<arg>session2</arg>
+<arg>bankAccounts</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.966" level="INFO">GET Request : url=http://localhost:3001/bankAccounts 
+ path_url=/bankAccounts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AuDBF-3b9lzjfaXgORVAIxtTfyg8dY3Ov.Is9Qkm5uGEFqqpFbK0U26D1ggXljt2157vD%2F2FtWOj4'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.966" level="INFO">GET Response : url=http://localhost:3001/bankAccounts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '588', 'ETag': 'W/"24c-aFcgeVLyQYXMS2yHqXaji8x5iaw"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"4l6MFwgv7b","uuid":"a05f05f0-f037-4b43-a1cd-5049a5d04e6d","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":true,"createdAt":"2023-02-26T18:35:42.963Z","modifiedAt":"2023-02-26T18:35:42.963Z"},{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"2023-02-26T18:40:55.944Z","modifiedAt":"2023-02-26T18:40:55.944Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.967" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.954" endtime="20230227 00:10:55.967"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${get_all}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230227 00:10:55.969" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.967" endtime="20230227 00:10:55.969"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${bank_name}</var>
+<arg>${get_all.json()['results'][0]['bankName']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:55.970" level="INFO">${bank_name} = Axis Bank</msg>
+<status status="PASS" starttime="20230227 00:10:55.969" endtime="20230227 00:10:55.970"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${bank_name}</arg>
+<arg>${bankTransfer_data}[bankname_xpected]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:55.970" endtime="20230227 00:10:55.971"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${account_number}</var>
+<arg>${get_all.json()['results'][0]['accountNumber']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:55.972" level="INFO">${account_number} = Generate random string 9 [NUMBERS]</msg>
+<status status="PASS" starttime="20230227 00:10:55.971" endtime="20230227 00:10:55.972"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${account_number}</arg>
+<arg>${random_num}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:55.972" endtime="20230227 00:10:55.973"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${routing_number}</var>
+<arg>${get_all.json()['results'][0]['routingNumber']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:55.974" level="INFO">${routing_number} = 987654321</msg>
+<status status="PASS" starttime="20230227 00:10:55.973" endtime="20230227 00:10:55.974"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${routing_number}</arg>
+<arg>${bankTransfer_data}[routing_number_xpected]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:55.975" endtime="20230227 00:10:55.975"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.954" endtime="20230227 00:10:55.975"/>
+</kw>
+<tag>BT-003: Get_Bank_account_details</tag>
+<status status="PASS" starttime="20230227 00:10:55.953" endtime="20230227 00:10:55.976"/>
+</test>
+<test id="s1-s1-t4" name="BT-004: Delete_Bank_account" line="22">
+<kw name="delete_bank_a/c" library="API_resources">
+<kw name="Get Length" library="BuiltIn">
+<var>${total}</var>
+<arg>${get_all.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.979" level="INFO">Length is 2</msg>
+<msg timestamp="20230227 00:10:55.979" level="INFO">${total} = 2</msg>
+<status status="PASS" starttime="20230227 00:10:55.978" endtime="20230227 00:10:55.979"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>0</value>
+<value>${total}</value>
+<iter>
+<var name="${i}">0</var>
+<if>
+<branch type="IF" condition="&quot;${get_all.json()['results'][${i}]['accountNumber']}&quot;==&quot;${random_num}&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${to_be_deleted_id}</var>
+<arg>${get_all.json()['results'][${i}]['id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:55.985" level="INFO">${to_be_deleted_id} = 4l6MFwgv7b</msg>
+<status status="PASS" starttime="20230227 00:10:55.983" endtime="20230227 00:10:55.985"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${to_be_deleted_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230227 00:10:55.986" level="INFO">${to_be_deleted_id} = 4l6MFwgv7b</msg>
+<status status="PASS" starttime="20230227 00:10:55.986" endtime="20230227 00:10:55.989"/>
+</kw>
+<break>
+<status status="PASS" starttime="20230227 00:10:55.989" endtime="20230227 00:10:55.989"/>
+</break>
+<status status="PASS" starttime="20230227 00:10:55.981" endtime="20230227 00:10:55.990"/>
+</branch>
+<branch type="ELSE">
+<continue>
+<status status="NOT RUN" starttime="20230227 00:10:55.990" endtime="20230227 00:10:55.990"/>
+</continue>
+<status status="NOT RUN" starttime="20230227 00:10:55.990" endtime="20230227 00:10:55.990"/>
+</branch>
+<status status="PASS" starttime="20230227 00:10:55.980" endtime="20230227 00:10:55.991"/>
+</if>
+<status status="PASS" starttime="20230227 00:10:55.980" endtime="20230227 00:10:55.991"/>
+</iter>
+<status status="PASS" starttime="20230227 00:10:55.979" endtime="20230227 00:10:55.991"/>
+</for>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${get_all}</var>
+<arg>session2</arg>
+<arg>bankAccounts/${to_be_deleted_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.019" level="INFO">DELETE Request : url=http://localhost:3001/bankAccounts/4l6MFwgv7b 
+ path_url=/bankAccounts/4l6MFwgv7b 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AuDBF-3b9lzjfaXgORVAIxtTfyg8dY3Ov.Is9Qkm5uGEFqqpFbK0U26D1ggXljt2157vD%2F2FtWOj4', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.019" level="INFO">DELETE Response : url=http://localhost:3001/bankAccounts/4l6MFwgv7b 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={} 
+ </msg>
+<msg timestamp="20230227 00:10:56.020" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.991" endtime="20230227 00:10:56.020"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_all}</var>
+<arg>session2</arg>
+<arg>bankAccounts</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.146" level="INFO">GET Request : url=http://localhost:3001/bankAccounts 
+ path_url=/bankAccounts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AuDBF-3b9lzjfaXgORVAIxtTfyg8dY3Ov.Is9Qkm5uGEFqqpFbK0U26D1ggXljt2157vD%2F2FtWOj4'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.146" level="INFO">GET Response : url=http://localhost:3001/bankAccounts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '588', 'ETag': 'W/"24c-aFcgeVLyQYXMS2yHqXaji8x5iaw"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"4l6MFwgv7b","uuid":"a05f05f0-f037-4b43-a1cd-5049a5d04e6d","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":true,"createdAt":"2023-02-26T18:35:42.963Z","modifiedAt":"2023-02-26T18:35:42.963Z"},{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"2023-02-26T18:40:55.944Z","modifiedAt":"2023-02-26T18:40:55.944Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.147" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.020" endtime="20230227 00:10:56.147"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total}</var>
+<arg>${get_all.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.149" level="INFO">Length is 2</msg>
+<msg timestamp="20230227 00:10:56.149" level="INFO">${total} = 2</msg>
+<status status="PASS" starttime="20230227 00:10:56.147" endtime="20230227 00:10:56.149"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>0</value>
+<value>${total}</value>
+<iter>
+<var name="${i}">0</var>
+<if>
+<branch type="IF" condition="&quot;${get_all.json()['results'][${i}]['id']}&quot;==&quot;${to_be_deleted_id}&quot;">
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${get_all.json()['results'][${i}]['isDeleted']}"=="True"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.151" endtime="20230227 00:10:56.154"/>
+</kw>
+<break>
+<status status="PASS" starttime="20230227 00:10:56.154" endtime="20230227 00:10:56.154"/>
+</break>
+<status status="PASS" starttime="20230227 00:10:56.151" endtime="20230227 00:10:56.154"/>
+</branch>
+<branch type="ELSE">
+<continue>
+<status status="NOT RUN" starttime="20230227 00:10:56.155" endtime="20230227 00:10:56.155"/>
+</continue>
+<status status="NOT RUN" starttime="20230227 00:10:56.154" endtime="20230227 00:10:56.155"/>
+</branch>
+<status status="PASS" starttime="20230227 00:10:56.150" endtime="20230227 00:10:56.155"/>
+</if>
+<status status="PASS" starttime="20230227 00:10:56.150" endtime="20230227 00:10:56.155"/>
+</iter>
+<status status="PASS" starttime="20230227 00:10:56.150" endtime="20230227 00:10:56.155"/>
+</for>
+<status status="PASS" starttime="20230227 00:10:55.977" endtime="20230227 00:10:56.155"/>
+</kw>
+<tag>BT-004: Delete_Bank_account</tag>
+<status status="PASS" starttime="20230227 00:10:55.976" endtime="20230227 00:10:56.156"/>
+</test>
+<test id="s1-s1-t5" name="BT-005: Create_Bank_account_graphql" line="26">
+<kw name="login_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.158" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.158" endtime="20230227 00:10:56.158"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:56.159" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:56.159" endtime="20230227 00:10:56.159"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.160" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.160" endtime="20230227 00:10:56.160"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.333" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:56.334" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-PqrpBl/85ffjkHcvb3QgZCtfRNM"', 'Set-Cookie': 'connect.sid=s%3ADhUZclBUcKpeE4hu3gjLxlebeMEiVqhg.tUUfsIsXDGlBgQTQzG%2Free3Ef2o6zs25FLfqqm%2BfpEg; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.334" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.160" endtime="20230227 00:10:56.334"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:56.334" endtime="20230227 00:10:56.335"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.157" endtime="20230227 00:10:56.335"/>
+</kw>
+<kw name="create_bank_a/c_graphql" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${bank_details}</var>
+<arg>accountNumber=${random_num}</arg>
+<arg>bankName=${bankTransfer_data}[bankname_xpected]</arg>
+<arg>routingNumber=${bankTransfer_data}[routing_number_xpected]</arg>
+<arg>query=${Signin_data}[get_data]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.337" level="INFO">${bank_details} = {'accountNumber': 'Generate random string 9 [NUMBERS]', 'bankName': 'Axis Bank', 'routingNumber': '987654321', 'query': '\n  query ListBankAccount {\n    listBankAccount {\n      id\n      uuid\n     ...</msg>
+<status status="PASS" starttime="20230227 00:10:56.336" endtime="20230227 00:10:56.337"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${create_back_ac}</var>
+<arg>session2</arg>
+<arg>graphql</arg>
+<arg>data=${bank_details}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.347" level="INFO">POST Request : url=http://localhost:3001/graphql 
+ path_url=/graphql 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ADhUZclBUcKpeE4hu3gjLxlebeMEiVqhg.tUUfsIsXDGlBgQTQzG%2Free3Ef2o6zs25FLfqqm%2BfpEg', 'Content-Length': '334', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=accountNumber=Generate+random+string+9+%5BNUMBERS%5D&amp;bankName=Axis+Bank&amp;routingNumber=987654321&amp;query=%0A++query+ListBankAccount+%7B%0A++++listBankAccount+%7B%0A++++++id%0A++++++uuid%0A++++++userId%0A++++++bankName%0A++++++accountNumber%0A++++++routingNumber%0A++++++isDeleted%0A++++++createdAt%0A++++++modifiedAt%0A++++%7D%0A++%7D%0A 
+ </msg>
+<msg timestamp="20230227 00:10:56.347" level="INFO">POST Response : url=http://localhost:3001/graphql 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '561', 'ETag': 'W/"231-btJYZXXPp5WfqpD2B0SEjJYj+1s"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"data":{"listBankAccount":[{"id":"4l6MFwgv7b","uuid":"a05f05f0-f037-4b43-a1cd-5049a5d04e6d","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":true,"createdAt":"1677436542963","modifiedAt":"1677436542963"},{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"1677436855944","modifiedAt":"1677436855944"}]}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.347" level="INFO">${create_back_ac} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.337" endtime="20230227 00:10:56.347"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.335" endtime="20230227 00:10:56.348"/>
+</kw>
+<tag>BT-005: Create_Bank_account_graphql</tag>
+<status status="PASS" starttime="20230227 00:10:56.156" endtime="20230227 00:10:56.348"/>
+</test>
+<test id="s1-s1-t6" name="BT-006: Get_Bank_account_graphql" line="31">
+<kw name="get_all_bank_a/cs_graphql" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>query=${Signin_data}[get_data]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.351" level="INFO">${body} = {'query': '\n  query ListBankAccount {\n    listBankAccount {\n      id\n      uuid\n      userId\n      bankName\n      accountNumber\n      routingNumber\n      isDeleted\n      createdAt\n      mod...</msg>
+<status status="PASS" starttime="20230227 00:10:56.351" endtime="20230227 00:10:56.351"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${get_all}</var>
+<arg>session2</arg>
+<arg>graphql</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.361" level="INFO">POST Request : url=http://localhost:3001/graphql 
+ path_url=/graphql 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ADhUZclBUcKpeE4hu3gjLxlebeMEiVqhg.tUUfsIsXDGlBgQTQzG%2Free3Ef2o6zs25FLfqqm%2BfpEg', 'Content-Length': '238', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=query=%0A++query+ListBankAccount+%7B%0A++++listBankAccount+%7B%0A++++++id%0A++++++uuid%0A++++++userId%0A++++++bankName%0A++++++accountNumber%0A++++++routingNumber%0A++++++isDeleted%0A++++++createdAt%0A++++++modifiedAt%0A++++%7D%0A++%7D%0A 
+ </msg>
+<msg timestamp="20230227 00:10:56.361" level="INFO">POST Response : url=http://localhost:3001/graphql 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '561', 'ETag': 'W/"231-btJYZXXPp5WfqpD2B0SEjJYj+1s"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"data":{"listBankAccount":[{"id":"4l6MFwgv7b","uuid":"a05f05f0-f037-4b43-a1cd-5049a5d04e6d","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":true,"createdAt":"1677436542963","modifiedAt":"1677436542963"},{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"1677436855944","modifiedAt":"1677436855944"}]}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.361" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.352" endtime="20230227 00:10:56.361"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${get_all}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230227 00:10:56.363" level="INFO">${get_all} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.362" endtime="20230227 00:10:56.363"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${bank_name}</var>
+<arg>${get_all.json()['data']['listBankAccount'][0]['bankName']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:56.364" level="INFO">${bank_name} = Axis Bank</msg>
+<status status="PASS" starttime="20230227 00:10:56.363" endtime="20230227 00:10:56.364"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${bank_name}</arg>
+<arg>${bankTransfer_data}[bankname_xpected]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:56.365" endtime="20230227 00:10:56.366"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${account_number}</var>
+<arg>${get_all.json()['data']['listBankAccount'][0]['accountNumber']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:56.367" level="INFO">${account_number} = Generate random string 9 [NUMBERS]</msg>
+<status status="PASS" starttime="20230227 00:10:56.366" endtime="20230227 00:10:56.368"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${account_number}</arg>
+<arg>${random_num}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:56.368" endtime="20230227 00:10:56.369"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${routing_number}</var>
+<arg>${get_all.json()['data']['listBankAccount'][0]['routingNumber']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:56.369" level="INFO">${routing_number} = 987654321</msg>
+<status status="PASS" starttime="20230227 00:10:56.369" endtime="20230227 00:10:56.369"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${routing_number}</arg>
+<arg>${bankTransfer_data}[routing_number_xpected]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230227 00:10:56.369" endtime="20230227 00:10:56.370"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.349" endtime="20230227 00:10:56.370"/>
+</kw>
+<tag>BT-006: Get_Bank_account_graphql</tag>
+<status status="PASS" starttime="20230227 00:10:56.349" endtime="20230227 00:10:56.370"/>
+</test>
+<test id="s1-s1-t7" name="BT-007: CreateBankTransfer" line="35">
+<kw name="login_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.373" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.372" endtime="20230227 00:10:56.373"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:56.374" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:56.373" endtime="20230227 00:10:56.374"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.376" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.375" endtime="20230227 00:10:56.376"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.499" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:56.499" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-PqrpBl/85ffjkHcvb3QgZCtfRNM"', 'Set-Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.499" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.376" endtime="20230227 00:10:56.499"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:56.500" endtime="20230227 00:10:56.500"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.372" endtime="20230227 00:10:56.501"/>
+</kw>
+<kw name="create_banktransfer" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${data}</var>
+<arg>amount=${bankTransfer_data}[amount]</arg>
+<arg>description=${bankTransfer_data}[description]</arg>
+<arg>receiverId=${bankTransfer_data}[receiverId]</arg>
+<arg>senderId=${bankTransfer_data}[senderId]</arg>
+<arg>transactionType=${bankTransfer_data}[transactionType]</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.503" level="INFO">${data} = {'amount': '2000', 'description': 'testing', 'receiverId': 't45AiwidW', 'senderId': 'Pe7g0o-GC', 'transactionType': 'payment'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.501" endtime="20230227 00:10:56.503"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${create_bank_transfer}</var>
+<arg>session2</arg>
+<arg>transactions</arg>
+<arg>data=${data}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.543" level="INFO">POST Request : url=http://localhost:3001/transactions 
+ path_url=/transactions 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE', 'Content-Length': '95', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=amount=2000&amp;description=testing&amp;receiverId=t45AiwidW&amp;senderId=Pe7g0o-GC&amp;transactionType=payment 
+ </msg>
+<msg timestamp="20230227 00:10:56.544" level="INFO">POST Response : url=http://localhost:3001/transactions 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '267', 'ETag': 'W/"10b-tuylzEqnQfVis+sp7QzOMnQkLcA"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"transaction":{"id":"FrZjliQ21","uuid":"4e66f70c-9b83-4bb8-bb71-373a0bf53e9e","amount":200000,"description":"testing","receiverId":"t45AiwidW","senderId":"iIo5YbNZk","status":"complete","createdAt":"2023-02-26T18:40:56.509Z","modifiedAt":"2023-02-26T18:40:56.509Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:56.544" level="INFO">${create_bank_transfer} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.503" endtime="20230227 00:10:56.544"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${bank_transfer_id}</var>
+<arg>${create_bank_transfer.json()['transaction']['id']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230227 00:10:56.546" level="INFO">${bank_transfer_id} = FrZjliQ21</msg>
+<status status="PASS" starttime="20230227 00:10:56.544" endtime="20230227 00:10:56.546"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${bank_transfer_id}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20230227 00:10:56.547" level="INFO">${bank_transfer_id} = FrZjliQ21</msg>
+<status status="PASS" starttime="20230227 00:10:56.547" endtime="20230227 00:10:56.547"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${create_bank_transfer.json()['transaction']['status']}"=="${bankTransfer_data}[status]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.548" endtime="20230227 00:10:56.550"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${create_bank_transfer.json()['transaction']['amount']}"=="${bankTransfer_data}[amount]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.550" endtime="20230227 00:10:56.552"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${create_bank_transfer.json()['transaction']['description']}"=="${bankTransfer_data}[description]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.553" endtime="20230227 00:10:56.555"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${create_bank_transfer.json()['transaction']['receiverId']}"=="${bankTransfer_data}[receiverId]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.555" endtime="20230227 00:10:56.557"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${create_bank_transfer.json()['transaction']['senderId']}"=="${bankTransfer_data}[senderId]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.557" endtime="20230227 00:10:56.559"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.501" endtime="20230227 00:10:56.559"/>
+</kw>
+<tag>BT-007: Create a new bank transfer</tag>
+<status status="PASS" starttime="20230227 00:10:56.371" endtime="20230227 00:10:56.559"/>
+</test>
+<test id="s1-s1-t8" name="BT-008: GetTransferAPI" line="39">
+<kw name="get_bankTransfer" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_bank_transfer}</var>
+<arg>session2</arg>
+<arg>transactions</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.568" level="INFO">GET Request : url=http://localhost:3001/transactions 
+ path_url=/transactions 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.568" level="INFO">GET Response : url=http://localhost:3001/transactions 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1333', 'ETag': 'W/"535-2a1uGbVIx9asLqPGpDFLantNcRE"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":false,"totalPages":1},"results":[{"receiverName":"Edgar Johns","senderName":"Karthee1 S","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"FrZjliQ21","uuid":"4e66f70c-9b83-4bb8-bb71-373a0bf53e9e","amount":200000,"description":"testing","receiverId":"t45AiwidW","senderId":"iIo5YbNZk","status":"complete","createdAt":"2023-02-26T18:40:56.509Z","modifiedAt":"2023-02-26T18:40:56.509Z"},{"receiverName":"Edgar Johns","senderName":"Karthee1 S","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[{"id":"h-i02CW9ky","uuid":"4365b282-412f-4108-a6a8-92c3d392f462","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.620Z","modifiedAt":"2023-02-26T18:35:44.620Z"}],"comments":[{"id":"JuZUZfW93P","uuid":"436b2566-4fb4-4201-983e-19d2f38bfab5","content":"Send you the share","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.566Z","modifiedAt":"2023-02-26T18:35:44.566Z"}],"id":"Ca9zQm1ct","uuid":"63fec23f-f541-44dd-a4e9-0456d5d0e942","amount":200000,"description":"testing","receiverId":"t45AiwidW","senderId":"iIo5YbNZk","status":"complete","createdAt":"2023-02-26T18:35:44.424Z","modifiedAt":"2023-02-26T18:35:44.424Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.569" level="INFO">${get_bank_transfer} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.561" endtime="20230227 00:10:56.569"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_transfers}</var>
+<arg>${get_bank_transfer.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.570" level="INFO">Length is 2</msg>
+<msg timestamp="20230227 00:10:56.570" level="INFO">${total_transfers} = 2</msg>
+<status status="PASS" starttime="20230227 00:10:56.569" endtime="20230227 00:10:56.570"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${i}</var>
+<value>0</value>
+<value>${total_transfers}</value>
+<iter>
+<var name="${i}">0</var>
+<if>
+<branch type="IF" condition="&quot;${get_bank_transfer.json()['results'][${i}]['id']}&quot;==&quot;${bank_transfer_id}&quot;">
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${get_bank_transfer.json()['results'][${i}]['amount']}"=="${bankTransfer_data}[amount]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.573" endtime="20230227 00:10:56.576"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>"${get_bank_transfer.json()['results'][${i}]['description']}"=="${bankTransfer_data}[description]"</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.577" endtime="20230227 00:10:56.581"/>
+</kw>
+<break>
+<status status="PASS" starttime="20230227 00:10:56.581" endtime="20230227 00:10:56.582"/>
+</break>
+<status status="PASS" starttime="20230227 00:10:56.573" endtime="20230227 00:10:56.582"/>
+</branch>
+<branch type="ELSE">
+<continue>
+<status status="NOT RUN" starttime="20230227 00:10:56.582" endtime="20230227 00:10:56.582"/>
+</continue>
+<status status="NOT RUN" starttime="20230227 00:10:56.582" endtime="20230227 00:10:56.582"/>
+</branch>
+<status status="PASS" starttime="20230227 00:10:56.572" endtime="20230227 00:10:56.583"/>
+</if>
+<status status="PASS" starttime="20230227 00:10:56.570" endtime="20230227 00:10:56.583"/>
+</iter>
+<status status="PASS" starttime="20230227 00:10:56.570" endtime="20230227 00:10:56.583"/>
+</for>
+<status status="PASS" starttime="20230227 00:10:56.560" endtime="20230227 00:10:56.583"/>
+</kw>
+<tag>BT-008: Gets a list of bank transfers for user</tag>
+<status status="PASS" starttime="20230227 00:10:56.559" endtime="20230227 00:10:56.584"/>
+</test>
+<test id="s1-s1-t9" name="BT-009: Post_Comments" line="43">
+<kw name="post_comments" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>content=${bankTransfer_data}[comments]</arg>
+<arg>transactionId=${bank_transfer_id}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.587" level="INFO">${body} = {'content': 'Send you the share', 'transactionId': 'FrZjliQ21'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.586" endtime="20230227 00:10:56.587"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${post_comments}</var>
+<arg>session2</arg>
+<arg>comments/${bank_transfer_id}</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.608" level="INFO">POST Request : url=http://localhost:3001/comments/FrZjliQ21 
+ path_url=/comments/FrZjliQ21 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE', 'Content-Length': '50', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=content=Send+you+the+share&amp;transactionId=FrZjliQ21 
+ </msg>
+<msg timestamp="20230227 00:10:56.608" level="INFO">POST Response : url=http://localhost:3001/comments/FrZjliQ21 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<msg timestamp="20230227 00:10:56.608" level="INFO">${post_comments} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.587" endtime="20230227 00:10:56.608"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.608" endtime="20230227 00:10:56.609"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.586" endtime="20230227 00:10:56.609"/>
+</kw>
+<tag>BT-009: Posting comments to the bank transfer</tag>
+<status status="PASS" starttime="20230227 00:10:56.584" endtime="20230227 00:10:56.612"/>
+</test>
+<test id="s1-s1-t10" name="BT-010: Get_Comments" line="47">
+<kw name="get_comments" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_comments}</var>
+<arg>session2</arg>
+<arg>comments/${bank_transfer_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.621" level="INFO">GET Request : url=http://localhost:3001/comments/FrZjliQ21 
+ path_url=/comments/FrZjliQ21 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.621" level="INFO">GET Response : url=http://localhost:3001/comments/FrZjliQ21 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '239', 'ETag': 'W/"ef-t3aZdsGRtDgCubDrYNsnmaHGeTo"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"comments":[{"id":"0ED0U48dCs","uuid":"30c8f0ed-f2c5-4861-bef7-c426fe188342","content":"Send you the share","userId":"iIo5YbNZk","transactionId":"FrZjliQ21","createdAt":"2023-02-26T18:40:56.595Z","modifiedAt":"2023-02-26T18:40:56.595Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.621" level="INFO">${get_comments} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.615" endtime="20230227 00:10:56.621"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>'${get_comments.json()['comments'][0]['content']}'=='${bankTransfer_data}[comments]'</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.622" endtime="20230227 00:10:56.623"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.614" endtime="20230227 00:10:56.623"/>
+</kw>
+<tag>BT-010: Getting comments from the bank transfer</tag>
+<status status="PASS" starttime="20230227 00:10:56.613" endtime="20230227 00:10:56.623"/>
+</test>
+<test id="s1-s1-t11" name="BT-011: Post_Likes" line="50">
+<kw name="post_Likes" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>transactionId=${bank_transfer_id}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:56.625" level="INFO">${body} = {'transactionId': 'FrZjliQ21'}</msg>
+<status status="PASS" starttime="20230227 00:10:56.625" endtime="20230227 00:10:56.625"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${post_like}</var>
+<arg>session2</arg>
+<arg>likes/${bank_transfer_id}</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.644" level="INFO">POST Request : url=http://localhost:3001/likes/FrZjliQ21 
+ path_url=/likes/FrZjliQ21 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE', 'Content-Length': '23', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=transactionId=FrZjliQ21 
+ </msg>
+<msg timestamp="20230227 00:10:56.644" level="INFO">POST Response : url=http://localhost:3001/likes/FrZjliQ21 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<msg timestamp="20230227 00:10:56.645" level="INFO">${post_like} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.626" endtime="20230227 00:10:56.645"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.645" endtime="20230227 00:10:56.646"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.625" endtime="20230227 00:10:56.646"/>
+</kw>
+<tag>BT-011: Posting likes to the bank transfer</tag>
+<status status="PASS" starttime="20230227 00:10:56.624" endtime="20230227 00:10:56.646"/>
+</test>
+<test id="s1-s1-t12" name="BT-012: Get_Likes" line="54">
+<kw name="Get_Likes" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_likes}</var>
+<arg>session2</arg>
+<arg>likes/${bank_transfer_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.654" level="INFO">GET Request : url=http://localhost:3001/likes/FrZjliQ21 
+ path_url=/likes/FrZjliQ21 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.655" level="INFO">GET Response : url=http://localhost:3001/likes/FrZjliQ21 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '205', 'ETag': 'W/"cd-PZ9MUiIauC0VVogXK+BhOmpkvgA"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"likes":[{"id":"ImTUBqvVUk","uuid":"f758c979-6207-4c96-9a07-faea76d36498","userId":"iIo5YbNZk","transactionId":"FrZjliQ21","createdAt":"2023-02-26T18:40:56.631Z","modifiedAt":"2023-02-26T18:40:56.631Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.655" level="INFO">${get_likes} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.648" endtime="20230227 00:10:56.655"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.655" endtime="20230227 00:10:56.656"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.648" endtime="20230227 00:10:56.656"/>
+</kw>
+<tag>BT-012: Getting likes from the bank transfer</tag>
+<status status="PASS" starttime="20230227 00:10:56.647" endtime="20230227 00:10:56.656"/>
+</test>
+<test id="s1-s1-t13" name="BT-013: get_notifications" line="58">
+<kw name="get_notifications" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_notification}</var>
+<arg>session2</arg>
+<arg>notifications</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.664" level="INFO">GET Request : url=http://localhost:3001/notifications 
+ path_url=/notifications 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ANCK4sGv97kNkuLthY0EczgwA3UG--E_z.yrcEuOnrIL7hZFmsTAml%2BikCuRYJdrP5TMJ92ghiKuE'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.665" level="INFO">GET Response : url=http://localhost:3001/notifications 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1055', 'ETag': 'W/"41f-fTrl1xdpqzxquYalpUp/v8GgV9U"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"userFullName":"Karthee1 S","id":"Ey9PHgk7Um","uuid":"941c9216-4e8d-4f18-989c-0d8376381fba","userId":"iIo5YbNZk","transactionId":"FrZjliQ21","likeId":"ImTUBqvVUk","isRead":false,"createdAt":"2023-02-26T18:40:56.636Z","modifiedAt":"2023-02-26T18:40:56.636Z"},{"userFullName":"Karthee1 S","id":"0a0qtQ8Rha","uuid":"fdeb0538-a0eb-4591-9dab-0a3857cc88d0","userId":"iIo5YbNZk","transactionId":"FrZjliQ21","commentId":"0ED0U48dCs","isRead":false,"createdAt":"2023-02-26T18:40:56.599Z","modifiedAt":"2023-02-26T18:40:56.599Z"},{"userFullName":"Karthee1 S","id":"cVtSVqezMx","uuid":"d4ab7e42-d42e-446f-8c57-d5bb21614a9d","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","likeId":"h-i02CW9ky","isRead":false,"createdAt":"2023-02-26T18:35:44.627Z","modifiedAt":"2023-02-26T18:35:44.627Z"},{"userFullName":"Karthee1 S","id":"agQQ6ET9gq","uuid":"e93d3a01-9fa4-468c-86ec-b6c3a49c452f","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","commentId":"JuZUZfW93P","isRead":false,"createdAt":"2023-02-26T18:35:44.572Z","modifiedAt":"2023-02-26T18:35:44.572Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.665" level="INFO">${get_notification} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.658" endtime="20230227 00:10:56.665"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.665" endtime="20230227 00:10:56.666"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_notification}</var>
+<arg>${get_notification.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.668" level="INFO">Length is 4</msg>
+<msg timestamp="20230227 00:10:56.669" level="INFO">${total_notification} = 4</msg>
+<status status="PASS" starttime="20230227 00:10:56.666" endtime="20230227 00:10:56.669"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_notification}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.669" endtime="20230227 00:10:56.669"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.657" endtime="20230227 00:10:56.670"/>
+</kw>
+<tag>BT-013: get_notifications</tag>
+<status status="PASS" starttime="20230227 00:10:56.657" endtime="20230227 00:10:56.670"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.674" endtime="20230227 00:10:56.671"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.651" endtime="20230227 00:10:56.673"/>
+</suite>
+<statistics>
+<total>
+<stat pass="13" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">BT-001: Create new user</stat>
+<stat pass="1" fail="0" skip="0">BT-002: Create_Bank_account</stat>
+<stat pass="1" fail="0" skip="0">BT-003: Get_Bank_account_details</stat>
+<stat pass="1" fail="0" skip="0">BT-004: Delete_Bank_account</stat>
+<stat pass="1" fail="0" skip="0">BT-005: Create_Bank_account_graphql</stat>
+<stat pass="1" fail="0" skip="0">BT-006: Get_Bank_account_graphql</stat>
+<stat pass="1" fail="0" skip="0">BT-007: Create a new bank transfer</stat>
+<stat pass="1" fail="0" skip="0">BT-008: Gets a list of bank transfers for user</stat>
+<stat pass="1" fail="0" skip="0">BT-009: Posting comments to the bank transfer</stat>
+<stat pass="1" fail="0" skip="0">BT-010: Getting comments from the bank transfer</stat>
+<stat pass="1" fail="0" skip="0">BT-011: Posting likes to the bank transfer</stat>
+<stat pass="1" fail="0" skip="0">BT-012: Getting likes from the bank transfer</stat>
+<stat pass="1" fail="0" skip="0">BT-013: get_notifications</stat>
+</tag>
+<suite>
+<stat pass="13" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="13" fail="0" skip="0" id="s1-s1" name="Api Banktransfers">Suites.Api Banktransfers</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

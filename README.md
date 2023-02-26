@@ -32,7 +32,7 @@ Please make sure to have selenium version >= 4.6 to download the driver based on
 1. Run the below command to execute the testcases in sequence order
     - ```robot --outputdir <folderpath> filename.robot```
   ###### Ex: 
-    - ```robot --outputdir Reports Testcases/*.robot```
+    - ```robot --outputdir Report Testcases/*.robot```
 
 2. Run the below command to execute the testcases parallely
     - ```pabot --processes 10 --outputdir <folderpath> filename.robot```
@@ -47,5 +47,6 @@ Please make sure to have selenium version >= 4.6 to download the driver based on
     
 2. If any testcase fails, screenshot can be seen in log.html file.
 
+[I have executed the testcases in *parallel mode* which has executed all 52 testcases in *1 minute 7 seconds*. You can find the execution in _report.html_ file in *Report* folder]
     
     

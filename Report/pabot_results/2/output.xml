@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.665" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Api Transactions" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_transactions.robot">
+<test id="s1-s1-t1" name="TR-001: Get_transactions_for_user" line="9">
+<kw name="login_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.361" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.359" endtime="20230227 00:10:55.362"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:55.367" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:55.363" endtime="20230227 00:10:55.368"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.368" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.368" endtime="20230227 00:10:55.368"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.936" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:55.936" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-PqrpBl/85ffjkHcvb3QgZCtfRNM"', 'Set-Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.936" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.369" endtime="20230227 00:10:55.937"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:55.938" endtime="20230227 00:10:55.938"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.329" endtime="20230227 00:10:55.939"/>
+</kw>
+<kw name="get_transactions" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.954" level="INFO">GET Request : url=http://localhost:3001/transactions 
+ path_url=/transactions 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.955" level="INFO">GET Response : url=http://localhost:3001/transactions 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '916', 'ETag': 'W/"394-IJtVKil8FPAXrAtj7sz0JKMQBaM"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":false,"totalPages":1},"results":[{"receiverName":"Edgar Johns","senderName":"Karthee1 S","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[{"id":"h-i02CW9ky","uuid":"4365b282-412f-4108-a6a8-92c3d392f462","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.620Z","modifiedAt":"2023-02-26T18:35:44.620Z"}],"comments":[{"id":"JuZUZfW93P","uuid":"436b2566-4fb4-4201-983e-19d2f38bfab5","content":"Send you the share","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.566Z","modifiedAt":"2023-02-26T18:35:44.566Z"}],"id":"Ca9zQm1ct","uuid":"63fec23f-f541-44dd-a4e9-0456d5d0e942","amount":200000,"description":"testing","receiverId":"t45AiwidW","senderId":"iIo5YbNZk","status":"complete","createdAt":"2023-02-26T18:35:44.424Z","modifiedAt":"2023-02-26T18:35:44.424Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.955" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.939" endtime="20230227 00:10:55.955"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.956" level="INFO">Length is 1</msg>
+<msg timestamp="20230227 00:10:55.957" level="INFO">${total_data} = 1</msg>
+<status status="PASS" starttime="20230227 00:10:55.955" endtime="20230227 00:10:55.957"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.957" endtime="20230227 00:10:55.958"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.939" endtime="20230227 00:10:55.958"/>
+</kw>
+<tag>TR-001: Gets a list of transactions for user</tag>
+<status status="PASS" starttime="20230227 00:10:55.327" endtime="20230227 00:10:55.959"/>
+</test>
+<test id="s1-s1-t2" name="TR-002: Get_pending_request_transactions_for_user" line="14">
+<kw name="get_pending_transactions" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions</arg>
+<arg>params=requestStatus=pending</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.971" level="INFO">GET Request : url=http://localhost:3001/transactions?requestStatus=pending 
+ path_url=/transactions?requestStatus=pending 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.971" level="INFO">GET Response : url=http://localhost:3001/transactions?requestStatus=pending 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'ETag': 'W/"53-E+TYYQrwFzClyTikMjbLwDWPvMw"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":false,"totalPages":0},"results":[]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.971" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.960" endtime="20230227 00:10:55.971"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.973" level="INFO">Length is 0</msg>
+<msg timestamp="20230227 00:10:55.973" level="INFO">${total_data} = 0</msg>
+<status status="PASS" starttime="20230227 00:10:55.972" endtime="20230227 00:10:55.973"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.973" endtime="20230227 00:10:55.974"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.960" endtime="20230227 00:10:55.974"/>
+</kw>
+<tag>TR-002: Gets a list of pending request transactions for user</tag>
+<status status="PASS" starttime="20230227 00:10:55.959" endtime="20230227 00:10:55.974"/>
+</test>
+<test id="s1-s1-t3" name="TR-003: Get_pending_request_transactions_for_a_time_range" line="18">
+<kw name="get_pending_transactions_on_daterange" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions</arg>
+<arg>params=requestStatus=pending&amp;dateRangeStart=Mon%20Jan%2001%202018%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time)&amp;dateRangeEnd=Thu%20Dec%2005%202030%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time)</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.988" level="INFO">GET Request : url=http://localhost:3001/transactions?requestStatus=pending&amp;dateRangeStart=Mon%20Jan%2001%202018%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time)&amp;dateRangeEnd=Thu%20Dec%2005%202030%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time) 
+ path_url=/transactions?requestStatus=pending&amp;dateRangeStart=Mon%20Jan%2001%202018%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time)&amp;dateRangeEnd=Thu%20Dec%2005%202030%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time) 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.988" level="INFO">GET Response : url=http://localhost:3001/transactions?requestStatus=pending&amp;dateRangeStart=Mon%20Jan%2001%202018%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time)&amp;dateRangeEnd=Thu%20Dec%2005%202030%2000%3A00%3A00%20GMT%2B0530%20(India%20Standard%20Time) 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'ETag': 'W/"53-E+TYYQrwFzClyTikMjbLwDWPvMw"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":false,"totalPages":0},"results":[]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.988" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.977" endtime="20230227 00:10:55.988"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.990" level="INFO">Length is 0</msg>
+<msg timestamp="20230227 00:10:55.990" level="INFO">${total_data} = 0</msg>
+<status status="PASS" starttime="20230227 00:10:55.989" endtime="20230227 00:10:55.990"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.990" endtime="20230227 00:10:55.991"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.976" endtime="20230227 00:10:55.991"/>
+</kw>
+<tag>TR-003: Gets a list of pending request transactions for user between a time range</tag>
+<status status="PASS" starttime="20230227 00:10:55.975" endtime="20230227 00:10:55.992"/>
+</test>
+<test id="s1-s1-t4" name="TR-004: Get_transactions_for_contacts_in_page_one" line="22">
+<kw name="get_contacts_data" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions/contacts</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.081" level="INFO">GET Request : url=http://localhost:3001/transactions/contacts 
+ path_url=/transactions/contacts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.081" level="INFO">GET Response : url=http://localhost:3001/transactions/contacts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'ETag': 'W/"53-E+TYYQrwFzClyTikMjbLwDWPvMw"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":false,"totalPages":0},"results":[]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.082" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.994" endtime="20230227 00:10:56.082"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.083" level="INFO">Length is 0</msg>
+<msg timestamp="20230227 00:10:56.083" level="INFO">${total_data} = 0</msg>
+<status status="PASS" starttime="20230227 00:10:56.082" endtime="20230227 00:10:56.083"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.085" endtime="20230227 00:10:56.085"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.993" endtime="20230227 00:10:56.086"/>
+</kw>
+<tag>TR-004: Gets a list of transactions for users list of contacts, page one</tag>
+<status status="PASS" starttime="20230227 00:10:55.992" endtime="20230227 00:10:56.086"/>
+</test>
+<test id="s1-s1-t5" name="TR-005: Get_transactions_for_contacts_in_page_two" line="26">
+<kw name="get_contacts_data_from_page2" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions/contacts</arg>
+<arg>params=page=2</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.153" level="INFO">GET Request : url=http://localhost:3001/transactions/contacts?page=2 
+ path_url=/transactions/contacts?page=2 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.153" level="INFO">GET Response : url=http://localhost:3001/transactions/contacts?page=2 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '83', 'ETag': 'W/"53-IqV+OZjlWOUeGjyHViliO60anTE"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":2,"limit":10,"hasNextPages":false,"totalPages":0},"results":[]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.154" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.088" endtime="20230227 00:10:56.154"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.155" level="INFO">Length is 0</msg>
+<msg timestamp="20230227 00:10:56.155" level="INFO">${total_data} = 0</msg>
+<status status="PASS" starttime="20230227 00:10:56.154" endtime="20230227 00:10:56.155"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.156" endtime="20230227 00:10:56.156"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.088" endtime="20230227 00:10:56.157"/>
+</kw>
+<tag>TR-005: Gets a list of transactions for users list of contacts, page two</tag>
+<status status="PASS" starttime="20230227 00:10:56.087" endtime="20230227 00:10:56.157"/>
+</test>
+<test id="s1-s1-t6" name="TR-006: Get_public_transactions" line="30">
+<kw name="get_public_transactions" library="API_resources">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_transactions}</var>
+<arg>session2</arg>
+<arg>transactions/public</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.205" level="INFO">GET Request : url=http://localhost:3001/transactions/public 
+ path_url=/transactions/public 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aiu_ZzNfs1RQbihoXAWGglVzYbTiV7Owq.FMfl6udMZ1UGa3YijYZZkoDOHnlpIcUiPv8dza%2BBNGc'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.205" level="INFO">GET Response : url=http://localhost:3001/transactions/public 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '6784', 'ETag': 'W/"1a80-/aBtVVNBCyYvx3s1M6EUAHwC+oM"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":true,"totalPages":21},"results":[{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"yxnzX2tqN","uuid":"3643ea8d-9f98-416c-8a5a-a69c700ab9fe","amount":200000,"description":"lunch share1","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","privacyLevel":"public","status":"complete","requestStatus":"accepted","createdAt":"2023-02-26T18:35:52.955Z","modifiedAt":"2023-02-26T18:35:52.955Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"_At1CbASZ","uuid":"6b2ebef0-0aae-4fd8-99ff-43b356b0cbae","amount":200000,"description":"lunch share1","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","privacyLevel":"public","status":"complete","createdAt":"2023-02-26T18:35:51.935Z","modifiedAt":"2023-02-26T18:35:51.935Z"},{"receiverName":"Kaylin Homenick","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"4AvM8cN1DdS","uuid":"078d6677-8ffc-4fb9-8c4a-51eccff25003","source":"lWfxENA5ZNy","amount":19085,"description":"Payment: qywYp6hS0U to bDjUb4ir5O","privacyLevel":"public","receiverId":"bDjUb4ir5O","senderId":"qywYp6hS0U","balanceAtCompletion":49730,"status":"pending","requestStatus":"","requestResolvedAt":"2020-03-07T03:51:12.083Z","createdAt":"2019-06-24T10:26:32.093Z","modifiedAt":"2020-05-21T23:49:52.493Z"},{"receiverName":"Devon Becker","senderName":"Kaylin Homenick","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","likes":[],"comments":[],"id":"mEYl_ZSc5Qqe","uuid":"4dc4f82e-2f2a-4d5c-a385-5aa06de93692","source":"u9hwi1YwtqW","amount":29001,"description":"Request: tsHF6_D5oQ to bDjUb4ir5O","privacyLevel":"public","receiverId":"tsHF6_D5oQ","senderId":"bDjUb4ir5O","balanceAtCompletion":32042,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2020-05-09T00:55:50.038Z","modifiedAt":"2020-05-21T23:49:22.131Z"},{"receiverName":"Devon Becker","senderName":"Kaylin Homenick","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","likes":[],"comments":[],"id":"Ke0eaLoOG8Dg","uuid":"5fe9d2f0-8dac-4f9e-8835-a668bd396c04","source":"u9hwi1YwtqW","amount":48379,"description":"Request: tsHF6_D5oQ to bDjUb4ir5O","privacyLevel":"public","receiverId":"tsHF6_D5oQ","senderId":"bDjUb4ir5O","balanceAtCompletion":7676,"status":"complete","requestStatus":"accepted","requestResolvedAt":"2019-07-21T09:18:58.739Z","createdAt":"2019-07-09T01:25:27.958Z","modifiedAt":"2020-05-21T23:46:44.312Z"},{"receiverName":"Kaylin Homenick","senderName":"Devon Becker","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","likes":[],"comments":[],"id":"8YnLpItFazLO","uuid":"11bc1da2-ce8a-4448-bff5-12dbf6c18a5f","source":"u9hwi1YwtqW","amount":41457,"description":"Payment: tsHF6_D5oQ to bDjUb4ir5O","privacyLevel":"public","receiverId":"bDjUb4ir5O","senderId":"tsHF6_D5oQ","balanceAtCompletion":8794,"status":"pending","requestStatus":"","requestResolvedAt":"2020-03-31T10:00:07.616Z","createdAt":"2020-01-09T20:21:14.993Z","modifiedAt":"2020-05-21T23:42:09.826Z"},{"receiverName":"Devon Becker","senderName":"Kaylin Homenick","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","likes":[],"comments":[],"id":"WfxoygTKhJHU","uuid":"b9a24b29-a729-4e21-bd08-5d92a9e4d817","source":"KtPcRvTYDCm","amount":43850,"description":"Request: tsHF6_D5oQ to bDjUb4ir5O","privacyLevel":"public","receiverId":"tsHF6_D5oQ","senderId":"bDjUb4ir5O","balanceAtCompletion":17587,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-10-24T05:40:11.581Z","modifiedAt":"2020-05-21T23:38:51.674Z"},{"receiverName":"Arely Kertzmann","senderName":"Kaylin Homenick","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","likes":[{"id":"heOJ8kL74llw","uuid":"4e162beb-ba2a-497c-95b7-6a8c169fe6b3","userId":"24VniajY1y","transactionId":"PPrW38YZtQD","createdAt":"2019-10-28T21:35:01.172Z","modifiedAt":"2020-05-21T19:55:36.573Z"}],"comments":[],"id":"PPrW38YZtQD","uuid":"5ba8ed13-b2cc-4e89-94a5-a936c1b36c70","source":"lWfxENA5ZNy","amount":33792,"description":"Payment: bDjUb4ir5O to qywYp6hS0U","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"bDjUb4ir5O","balanceAtCompletion":16478,"status":"complete","requestStatus":"","requestResolvedAt":"2020-03-12T00:37:04.898Z","createdAt":"2020-01-29T17:45:19.924Z","modifiedAt":"2020-05-21T23:37:38.577Z"},{"receiverName":"Devon Becker","senderName":"Kaylin Homenick","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","likes":[],"comments":[],"id":"NMrYdkrY_18W","uuid":"5960c536-559c-4b4b-8978-f95d1c1e23b2","source":"u9hwi1YwtqW","amount":22054,"description":"Request: tsHF6_D5oQ to bDjUb4ir5O","privacyLevel":"public","receiverId":"tsHF6_D5oQ","senderId":"bDjUb4ir5O","balanceAtCompletion":18419,"status":"complete","requestStatus":"accepted","requestResolvedAt":"2020-07-27T17:06:10.896Z","createdAt":"2020-01-30T15:26:25.026Z","modifiedAt":"2020-05-21T23:17:20.440Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"52aE38vMx3E","uuid":"5c56fc74-c382-4675-aa46-879792c33895","source":"RskoB7r4Bic","amount":7195,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":22183,"status":"pending","requestStatus":"","requestResolvedAt":"2020-10-16T14:46:11.717Z","createdAt":"2019-12-06T12:17:41.249Z","modifiedAt":"2020-05-21T23:09:07.419Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.206" level="INFO">${get_transactions} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.159" endtime="20230227 00:10:56.206"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_transactions.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.207" level="INFO">Length is 10</msg>
+<msg timestamp="20230227 00:10:56.207" level="INFO">${total_data} = 10</msg>
+<status status="PASS" starttime="20230227 00:10:56.206" endtime="20230227 00:10:56.208"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.208" endtime="20230227 00:10:56.208"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.158" endtime="20230227 00:10:56.209"/>
+</kw>
+<tag>TR-006: Gets a list of public transactions</tag>
+<status status="PASS" starttime="20230227 00:10:56.158" endtime="20230227 00:10:56.209"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.699" endtime="20230227 00:10:56.210"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.677" endtime="20230227 00:10:56.212"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">TR-001: Gets a list of transactions for user</stat>
+<stat pass="1" fail="0" skip="0">TR-002: Gets a list of pending request transactions for user</stat>
+<stat pass="1" fail="0" skip="0">TR-003: Gets a list of pending request transactions for user between a time range</stat>
+<stat pass="1" fail="0" skip="0">TR-004: Gets a list of transactions for users list of contacts, page one</stat>
+<stat pass="1" fail="0" skip="0">TR-005: Gets a list of transactions for users list of contacts, page two</stat>
+<stat pass="1" fail="0" skip="0">TR-006: Gets a list of public transactions</stat>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1" name="Api Transactions">Suites.Api Transactions</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

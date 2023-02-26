@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.617" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Api Testdata" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\api_testdata.robot">
+<test id="s1-s1-t1" name="TD-001: Get_remote_mock_data_for_users" line="9">
+<kw name="login_api" library="API_resources">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>username=${signup_data}[username]</arg>
+<arg>password=${signup_data}[password]</arg>
+<arg>type=LOGIN</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.364" level="INFO">${body} = {'username': 'kartheeswari1311@gmail.com', 'password': 'Welcome123#', 'type': 'LOGIN'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.363" endtime="20230227 00:10:55.364"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session2</arg>
+<arg>${Signin_data}[base_url]</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230227 00:10:55.366" level="INFO">Creating Session using : alias=session2, url=http://localhost:3001, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230227 00:10:55.365" endtime="20230227 00:10:55.366"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json;charset=utf-8</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230227 00:10:55.367" level="INFO">${header} = {'Content-Type': 'application/json;charset=utf-8'}</msg>
+<status status="PASS" starttime="20230227 00:10:55.367" endtime="20230227 00:10:55.367"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${loginresponse}</var>
+<arg>session2</arg>
+<arg>login</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.934" level="INFO">POST Request : url=http://localhost:3001/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '71', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=username=kartheeswari1311%40gmail.com&amp;password=Welcome123%23&amp;type=LOGIN 
+ </msg>
+<msg timestamp="20230227 00:10:55.934" level="INFO">POST Response : url=http://localhost:3001/login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '316', 'ETag': 'W/"13c-PqrpBl/85ffjkHcvb3QgZCtfRNM"', 'Set-Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY; Path=/; HttpOnly', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"}} 
+ </msg>
+<msg timestamp="20230227 00:10:55.934" level="INFO">${loginresponse} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.368" endtime="20230227 00:10:55.934"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${loginresponse}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230227 00:10:55.935" endtime="20230227 00:10:55.935"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.323" endtime="20230227 00:10:55.936"/>
+</kw>
+<kw name="get_mockdata" library="API_resources">
+<arg>users</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.942" level="INFO">GET Request : url=http://localhost:3001/testData/users 
+ path_url=/testData/users 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.942" level="INFO">GET Response : url=http://localhost:3001/testData/users 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '3289', 'ETag': 'W/"cd9-ywsxWuljIVUs57F9yhuT7JV5pxw"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":368137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"},{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"},{"id":"bDjUb4ir5O","uuid":"b4ebe114-141c-4397-9346-dd37d788f71b","firstName":"Kaylin","lastName":"Homenick","username":"Allie2","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Rebeca35@yahoo.com","phoneNumber":"072-208-4283","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","defaultPrivacyLevel":"private","balance":164867,"createdAt":"2019-09-15T04:44:05.536Z","modifiedAt":"2020-05-21T18:25:10.341Z"},{"id":"24VniajY1y","uuid":"0b00a187-6cf6-4d34-8f59-b8a8eabdddf6","firstName":"Ibrahim","lastName":"Dickens","username":"Giovanna74","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Pearl56@gmail.com","phoneNumber":"974-916-8746","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","defaultPrivacyLevel":"private","balance":145779,"createdAt":"2020-03-06T02:15:42.584Z","modifiedAt":"2020-05-21T09:25:42.974Z"},{"id":"tsHF6_D5oQ","uuid":"53315353-7ca6-4cd1-8fd6-af9fb5a9dd25","firstName":"Devon","lastName":"Becker","username":"Jessyca.Kuhic","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Jordy37@yahoo.com","phoneNumber":"277-189-3402","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","defaultPrivacyLevel":"contacts","balance":75369,"createdAt":"2020-02-11T21:26:46.510Z","modifiedAt":"2020-05-21T15:15:33.944Z"},{"id":"iIo5YbNZk","uuid":"85745817-2a66-408c-867f-d9f4a778538a","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$oI4/Xm9yCY5Dg/8Zqkc4r.bsdVAbiWI.eQ9JLYWNrsTsbpOQKEfmK","balance":0,"createdAt":"2023-02-26T18:35:42.277Z","modifiedAt":"2023-02-26T18:35:42.277Z"},{"id":"hiz3BtOQ_F","uuid":"74790bae-20c4-404d-8a35-79d43da8eefa","firstName":"Karthee1","lastName":"Johns","username":"Karthee1","password":"$2a$10$JdsMg2yKnrBAudUEHG6X2.hYeWI.yAO7w48EE5ZbXkE7PIfbsFAJi","balance":0,"createdAt":"2023-02-26T18:36:14.985Z","modifiedAt":"2023-02-26T18:36:14.985Z"},{"id":"K5k5zQA2X","uuid":"509836c8-b3ee-41cc-9caf-cf7202d24a15","firstName":"Karthee1","lastName":"S","username":"kartheeswari1311@gmail.com","password":"$2a$10$69fyNMZdIOY5YoYHstARuuH.uOCAPrSVhG5lylTASXMw/B1qPTo4W","balance":0,"createdAt":"2023-02-26T18:40:55.521Z","modifiedAt":"2023-02-26T18:40:55.521Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.943" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.936" endtime="20230227 00:10:55.943"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:55.943" endtime="20230227 00:10:55.944"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.945" level="INFO">Length is 8</msg>
+<msg timestamp="20230227 00:10:55.946" level="INFO">${total_data} = 8</msg>
+<status status="PASS" starttime="20230227 00:10:55.944" endtime="20230227 00:10:55.946"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.946" endtime="20230227 00:10:55.947"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.936" endtime="20230227 00:10:55.947"/>
+</kw>
+<tag>TD-001: Gets remote mock data for users</tag>
+<status status="PASS" starttime="20230227 00:10:55.321" endtime="20230227 00:10:55.947"/>
+</test>
+<test id="s1-s1-t2" name="TD-002: Get_remote_mock_data_for_contacts" line="14">
+<kw name="get_mockdata" library="API_resources">
+<arg>contacts</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.963" level="INFO">GET Request : url=http://localhost:3001/testData/contacts 
+ path_url=/testData/contacts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.963" level="INFO">GET Response : url=http://localhost:3001/testData/contacts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2950', 'ETag': 'W/"b86-NuUlQvJueOusfTR26EHVslW0ktQ"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"LSQ1h-WU1z","uuid":"2413a170-304d-4118-93ba-6b52a9cc581a","userId":"t45AiwidW","contactUserId":"qywYp6hS0U","createdAt":"2019-10-30T16:33:36.608Z","modifiedAt":"2020-05-21T11:29:12.141Z"},{"id":"c4A_5NFD3z","uuid":"9ab08f66-a458-487c-9bde-1c0bc3db6c7b","userId":"t45AiwidW","contactUserId":"bDjUb4ir5O","createdAt":"2019-09-02T00:35:52.232Z","modifiedAt":"2020-05-21T04:38:43.738Z"},{"id":"jfpbMLVuhP","uuid":"ade2e5bb-317c-4bca-ae4a-45379f762a43","userId":"t45AiwidW","contactUserId":"tsHF6_D5oQ","createdAt":"2019-06-21T15:29:01.813Z","modifiedAt":"2020-05-21T14:21:26.726Z"},{"id":"65XIkDUOFJ","uuid":"0ff083fa-cbc7-47f4-840d-228e143774b8","userId":"qywYp6hS0U","contactUserId":"t45AiwidW","createdAt":"2020-01-03T03:40:23.930Z","modifiedAt":"2020-05-21T08:01:05.435Z"},{"id":"TtRSp6V3BY","uuid":"6468bfa9-9418-433f-b47e-60952f7abe71","userId":"qywYp6hS0U","contactUserId":"bDjUb4ir5O","createdAt":"2019-08-15T21:13:22.365Z","modifiedAt":"2020-05-21T22:25:35.728Z"},{"id":"_wjLQ5uguG","uuid":"914f60d3-522d-4b52-9d14-df9c5a3afa5b","userId":"qywYp6hS0U","contactUserId":"tsHF6_D5oQ","createdAt":"2019-07-20T18:05:45.827Z","modifiedAt":"2020-05-21T13:03:04.064Z"},{"id":"GVz40SV7Bh","uuid":"c930864a-5058-46b6-948f-6b43c4e3dbba","userId":"bDjUb4ir5O","contactUserId":"qywYp6hS0U","createdAt":"2019-07-14T22:51:07.533Z","modifiedAt":"2020-05-21T13:49:02.645Z"},{"id":"pDgYTkzJEl","uuid":"dbaba3ab-38f4-4230-8950-90bc047e52d0","userId":"bDjUb4ir5O","contactUserId":"24VniajY1y","createdAt":"2019-12-05T08:41:12.453Z","modifiedAt":"2020-05-21T09:36:08.666Z"},{"id":"fkXV49MUJ3","uuid":"95c9def5-c5e3-4a49-bd4d-d46b2b421cd9","userId":"bDjUb4ir5O","contactUserId":"t45AiwidW","createdAt":"2019-12-21T02:41:00.415Z","modifiedAt":"2020-05-21T14:53:35.672Z"},{"id":"YXW-3EoK-d","uuid":"efe76fd1-7ffa-403e-a099-0783bd8da7b5","userId":"24VniajY1y","contactUserId":"bDjUb4ir5O","createdAt":"2020-02-13T01:43:34.842Z","modifiedAt":"2020-05-21T14:58:27.816Z"},{"id":"XfdO0VhzP4","uuid":"431cd24f-8fb9-45bc-9915-cca49bf9c4ad","userId":"24VniajY1y","contactUserId":"t45AiwidW","createdAt":"2019-08-03T23:47:58.710Z","modifiedAt":"2020-05-21T10:17:28.547Z"},{"id":"Znxm-DA9d9a","uuid":"658a4dc6-25df-45b1-ada5-49d6337e8992","userId":"24VniajY1y","contactUserId":"qywYp6hS0U","createdAt":"2019-12-06T16:43:06.250Z","modifiedAt":"2020-05-21T09:50:35.745Z"},{"id":"M-lgy3WSyZR","uuid":"53791b9d-2763-4064-952e-6511ac9fef6c","userId":"tsHF6_D5oQ","contactUserId":"t45AiwidW","createdAt":"2019-07-01T12:03:37.529Z","modifiedAt":"2020-05-21T00:35:43.529Z"},{"id":"vhGNcE5VSUJ","uuid":"2354d4db-c7cf-4aee-bb5b-c7bf75d59435","userId":"tsHF6_D5oQ","contactUserId":"24VniajY1y","createdAt":"2019-09-12T01:46:14.956Z","modifiedAt":"2020-05-21T06:41:55.535Z"},{"id":"ovpvxb8Y4j0","uuid":"47b09cd4-6c21-4415-b957-0cdb256698f0","userId":"tsHF6_D5oQ","contactUserId":"qywYp6hS0U","createdAt":"2019-12-02T23:21:11.557Z","modifiedAt":"2020-05-21T08:05:34.593Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.963" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.951" endtime="20230227 00:10:55.963"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:55.964" endtime="20230227 00:10:55.964"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.966" level="INFO">Length is 15</msg>
+<msg timestamp="20230227 00:10:55.966" level="INFO">${total_data} = 15</msg>
+<status status="PASS" starttime="20230227 00:10:55.965" endtime="20230227 00:10:55.966"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.967" endtime="20230227 00:10:55.967"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.950" endtime="20230227 00:10:55.969"/>
+</kw>
+<tag>TD-002: Gets remote mock data for contacts</tag>
+<status status="PASS" starttime="20230227 00:10:55.949" endtime="20230227 00:10:55.969"/>
+</test>
+<test id="s1-s1-t3" name="TC-003: Get_remote_mock_data_for_bankaccounts" line="18">
+<kw name="get_mockdata" library="API_resources">
+<arg>bankaccounts</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.977" level="INFO">GET Request : url=http://localhost:3001/testData/bankaccounts 
+ path_url=/testData/bankaccounts 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.977" level="INFO">GET Response : url=http://localhost:3001/testData/bankaccounts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2248', 'ETag': 'W/"8c8-1k1ILUalDGSqm4oquSjWGM1GwGo"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"RskoB7r4Bic","uuid":"a45f1803-b845-42aa-9142-f5f80ea09416","userId":"t45AiwidW","bankName":"O'Hara - Labadie Bank","accountNumber":"6123387981","routingNumber":"851823229","isDeleted":false,"createdAt":"2020-05-09T07:57:26.947Z","modifiedAt":"2020-05-21T22:18:50.916Z"},{"id":"lWfxENA5ZNy","uuid":"873abef5-130d-466b-acb0-7df446937389","userId":"qywYp6hS0U","bankName":"Kshlerin - Ledner Bank","accountNumber":"3859571950","routingNumber":"024971142","isDeleted":false,"createdAt":"2019-12-14T22:41:09.548Z","modifiedAt":"2020-05-21T09:46:44.754Z"},{"id":"u9hwi1YwtqW","uuid":"495b7499-7f4f-41bc-85e4-82d5a5f9f59f","userId":"bDjUb4ir5O","bankName":"Spinka Inc Bank","accountNumber":"2824810003","routingNumber":"805053268","isDeleted":false,"createdAt":"2019-08-07T00:21:43.527Z","modifiedAt":"2020-05-21T11:16:26.001Z"},{"id":"rLn5MeHrzAc","uuid":"3baa0a92-a350-45b0-9286-dda7e283f287","userId":"24VniajY1y","bankName":"Koch, Bergstrom and Turner Bank","accountNumber":"6679419239","routingNumber":"138064487","isDeleted":false,"createdAt":"2019-11-22T21:27:43.795Z","modifiedAt":"2020-05-21T14:37:22.066Z"},{"id":"KtPcRvTYDCm","uuid":"e93c3e21-2963-488d-9c3c-92e40d519380","userId":"tsHF6_D5oQ","bankName":"Dickinson - Goodwin Bank","accountNumber":"9374040169","routingNumber":"567514521","isDeleted":false,"createdAt":"2019-09-30T14:20:07.043Z","modifiedAt":"2020-05-21T22:40:28.910Z"},{"id":"4l6MFwgv7b","uuid":"a05f05f0-f037-4b43-a1cd-5049a5d04e6d","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":true,"createdAt":"2023-02-26T18:35:42.963Z","modifiedAt":"2023-02-26T18:35:42.963Z"},{"id":"Xt_giCXN8","uuid":"24725bfc-3a47-4a22-b29e-0c8dda7446cf","userId":"t45AiwidW","bankName":"Canara Bank","accountNumber":"987654321","routingNumber":"Axis Bank","isDeleted":true,"createdAt":"2023-02-26T18:35:55.302Z","modifiedAt":"2023-02-26T18:35:55.302Z"},{"id":"7yEzg9KQeA","uuid":"cf9d46f6-7d3d-484b-bbb8-292f9e8f4172","userId":"iIo5YbNZk","bankName":"Axis Bank","accountNumber":"Generate random string 9 [NUMBERS]","routingNumber":"987654321","isDeleted":false,"createdAt":"2023-02-26T18:40:55.944Z","modifiedAt":"2023-02-26T18:40:55.944Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:55.977" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.971" endtime="20230227 00:10:55.977"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:55.978" endtime="20230227 00:10:55.978"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.979" level="INFO">Length is 8</msg>
+<msg timestamp="20230227 00:10:55.980" level="INFO">${total_data} = 8</msg>
+<status status="PASS" starttime="20230227 00:10:55.978" endtime="20230227 00:10:55.980"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.980" endtime="20230227 00:10:55.981"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.970" endtime="20230227 00:10:55.981"/>
+</kw>
+<tag>TD-003: Gets remote mock data for bankaccounts</tag>
+<status status="PASS" starttime="20230227 00:10:55.969" endtime="20230227 00:10:55.981"/>
+</test>
+<test id="s1-s1-t4" name="TC-004: Get_remote_mock_data_for_notifications" line="22">
+<kw name="get_mockdata" library="API_resources">
+<arg>notifications</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:55.990" level="INFO">GET Request : url=http://localhost:3001/testData/notifications 
+ path_url=/testData/notifications 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:55.990" level="INFO">GET Response : url=http://localhost:3001/testData/notifications 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '11306', 'ETag': 'W/"2c2a-/jmRzPfMj+K9qiRMd6j/veTnlrk"', 'Date': 'Sun, 26 Feb 2023 18:40:55 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"9m-W-uI5fQUF","uuid":"f4a10fbf-d12e-4a6d-b888-d86989b66687","userId":"t45AiwidW","likeId":"heOJ8kL74llw","transactionId":"PPrW38YZtQD","isRead":false,"createdAt":"2019-10-15T13:21:49.772Z","modifiedAt":"2020-05-21T20:08:05.787Z"},{"id":"88Nrddj3XCir","uuid":"7b1697cf-4240-4eed-bc19-e60f60268b31","userId":"t45AiwidW","commentId":"K3HLpKcGKDiP","transactionId":"lPUBZKlc4MLR","isRead":false,"createdAt":"2019-06-20T06:13:18.420Z","modifiedAt":"2020-05-21T11:22:54.822Z"},{"id":"Bf5th29A1FHa","uuid":"f9a7bdb3-7c32-44bf-8ce6-af31ebffd7b3","userId":"t45AiwidW","transactionId":"76Vs0Fye9Mwt","status":"requested","isRead":false,"createdAt":"2020-03-08T01:11:42.032Z","modifiedAt":"2020-05-21T09:41:32.115Z"},{"id":"95qRwfJnSORQ","uuid":"0b5a0f25-c56b-4434-ba4d-21f133d8964f","userId":"t45AiwidW","transactionId":"xAsSYDsiEGSj","status":"requested","isRead":false,"createdAt":"2019-09-20T22:27:10.721Z","modifiedAt":"2020-05-21T14:55:58.008Z"},{"id":"ojTwLrF1tDvQ","uuid":"792ea312-b91f-406b-8929-77f83cdd6094","userId":"t45AiwidW","transactionId":"b0mCj0O2EKHN","status":"requested","isRead":false,"createdAt":"2019-11-25T00:43:47.170Z","modifiedAt":"2020-05-21T02:47:36.259Z"},{"id":"Fq8xLCRtpWhT","uuid":"0e2dc23a-1d85-49e5-98fb-93f9e8f961bb","userId":"t45AiwidW","transactionId":"76Vs0Fye9Mwt","status":"received","isRead":false,"createdAt":"2019-11-14T17:00:33.637Z","modifiedAt":"2020-05-21T12:51:07.700Z"},{"id":"tk8jNBQURvQz","uuid":"c4ece032-38e3-47e9-8284-fbfa6d96ef9a","userId":"t45AiwidW","transactionId":"xAsSYDsiEGSj","status":"received","isRead":false,"createdAt":"2019-11-12T12:51:00.239Z","modifiedAt":"2020-05-21T18:26:16.366Z"},{"id":"kpQnRR8__imz","uuid":"28e9c413-eb1c-488b-9a37-0755fd35cd15","userId":"t45AiwidW","transactionId":"b0mCj0O2EKHN","status":"received","isRead":false,"createdAt":"2020-01-27T17:56:05.262Z","modifiedAt":"2020-05-21T09:41:18.687Z"},{"id":"RIEHA01vEuda","uuid":"754907ec-53ad-45f6-9d4b-6106a02aafe4","userId":"qywYp6hS0U","likeId":"MC54o2D5r9aU","transactionId":"WIHpqM0xpcTx","isRead":false,"createdAt":"2019-08-03T21:19:53.947Z","modifiedAt":"2020-05-21T18:46:30.551Z"},{"id":"jrb75_Gp6VLn","uuid":"38cb2908-4412-479c-a250-e6679a083ce1","userId":"qywYp6hS0U","commentId":"YarNHJR_5Rh6","transactionId":"6MCm9R1dkLk_","isRead":false,"createdAt":"2019-08-09T10:01:18.031Z","modifiedAt":"2020-05-21T15:58:12.814Z"},{"id":"lOtrcNS2HSQS","uuid":"78263b19-13af-4045-8f35-94c7cb9cf664","userId":"qywYp6hS0U","transactionId":"CYsWTTXPOOKx","status":"requested","isRead":false,"createdAt":"2019-12-27T17:26:57.087Z","modifiedAt":"2020-05-21T18:58:24.867Z"},{"id":"6JkRSkXFnY_Y","uuid":"06950c81-5992-4879-8dd5-7b00558297d7","userId":"qywYp6hS0U","transactionId":"WIHpqM0xpcTx","status":"requested","isRead":false,"createdAt":"2019-05-26T20:55:20.886Z","modifiedAt":"2020-05-21T16:11:59.486Z"},{"id":"7pgWv8ixtxTH","uuid":"faee5f7d-9145-452b-b89f-583b1f9435c9","userId":"qywYp6hS0U","transactionId":"mEYl_ZSc5Qqe","status":"requested","isRead":false,"createdAt":"2020-02-13T23:07:48.541Z","modifiedAt":"2020-05-21T17:41:40.929Z"},{"id":"U5yPg0ZJFCL2","uuid":"93621c51-3e8f-451b-b42d-545d4d84a229","userId":"qywYp6hS0U","transactionId":"CYsWTTXPOOKx","status":"received","isRead":false,"createdAt":"2019-07-12T22:08:18.771Z","modifiedAt":"2020-05-21T02:32:10.762Z"},{"id":"A8bYtEPOVg4d","uuid":"bb671444-c6b5-4eee-ba88-0d1d851b70aa","userId":"qywYp6hS0U","transactionId":"WIHpqM0xpcTx","status":"received","isRead":false,"createdAt":"2019-10-11T14:05:57.472Z","modifiedAt":"2020-05-21T09:33:03.465Z"},{"id":"25Z84l9HRPtf","uuid":"bab143a0-d15e-4c65-9784-1dbfb2a62c21","userId":"qywYp6hS0U","transactionId":"mEYl_ZSc5Qqe","status":"received","isRead":false,"createdAt":"2019-12-06T17:35:23.247Z","modifiedAt":"2020-05-21T10:23:46.433Z"},{"id":"BEv_CgxfLJ4G","uuid":"f620c509-ab7d-4a8c-bbad-d4be18c1fb0c","userId":"bDjUb4ir5O","likeId":"-gdQmt-KLpbb","transactionId":"nsX8IwMhAhs","isRead":false,"createdAt":"2020-02-02T13:32:39.172Z","modifiedAt":"2020-05-21T17:37:17.071Z"},{"id":"mAaCKAb0SJeJ","uuid":"8c57b261-e05d-4171-bcc2-769815a5729b","userId":"bDjUb4ir5O","commentId":"gMCKplYPZics","transactionId":"zIjBNAdH6FCB","isRead":false,"createdAt":"2019-12-11T23:12:07.807Z","modifiedAt":"2020-05-21T19:21:22.845Z"},{"id":"oexmNQ8kn180","uuid":"50f7eecf-6779-476a-915e-1992d31db961","userId":"bDjUb4ir5O","transactionId":"fcVnddv0MpAW","status":"requested","isRead":false,"createdAt":"2020-04-11T19:13:41.696Z","modifiedAt":"2020-05-21T11:44:38.685Z"},{"id":"X1FhHIt3PWm5","uuid":"9c58dd4e-b112-4ccb-8886-2f3f1623eb94","userId":"bDjUb4ir5O","transactionId":"MFxV5V9H76i1","status":"requested","isRead":false,"createdAt":"2020-01-16T20:34:58.514Z","modifiedAt":"2020-05-21T02:31:23.434Z"},{"id":"8vvxn3hmHWYK","uuid":"496f4f29-b084-4221-9a18-3f108f364faa","userId":"bDjUb4ir5O","transactionId":"l62iaUEro5i","status":"requested","isRead":false,"createdAt":"2020-01-27T18:37:08.914Z","modifiedAt":"2020-05-21T00:16:25.530Z"},{"id":"8Vfrq-7SDD1g","uuid":"916402dc-3887-4ab8-bbe6-7f0e8c9f00fa","userId":"bDjUb4ir5O","transactionId":"fcVnddv0MpAW","status":"received","isRead":false,"createdAt":"2019-06-04T13:29:46.230Z","modifiedAt":"2020-05-21T01:11:20.923Z"},{"id":"YqxDdNXYa0-F","uuid":"d44939c6-ac6f-441c-a659-9b57a7c5610e","userId":"bDjUb4ir5O","transactionId":"MFxV5V9H76i1","status":"received","isRead":false,"createdAt":"2019-11-18T10:56:12.803Z","modifiedAt":"2020-05-21T07:48:14.826Z"},{"id":"aCU3_sQsUuJe","uuid":"380b16ae-5363-47de-a276-3e6d07bf1eec","userId":"bDjUb4ir5O","transactionId":"l62iaUEro5i","status":"received","isRead":false,"createdAt":"2020-03-15T09:10:58.718Z","modifiedAt":"2020-05-21T17:55:09.062Z"},{"id":"2taJdZnbkJ7K","uuid":"ac213218-3a7a-45b8-8dba-ca08802be635","userId":"24VniajY1y","likeId":"wI4DQCHvKTYg","transactionId":"K9XgQYqtkAr","isRead":false,"createdAt":"2019-12-12T10:15:24.927Z","modifiedAt":"2020-05-21T05:11:45.912Z"},{"id":"klUAmmf5FyUx","uuid":"8d404e32-8a44-4361-a4a1-87011312f977","userId":"24VniajY1y","commentId":"K3HLpKcGKDiP","transactionId":"lPUBZKlc4MLR","isRead":false,"createdAt":"2019-06-24T23:38:58.641Z","modifiedAt":"2020-05-21T03:39:57.679Z"},{"id":"mjNPjDKm4LH8","uuid":"bdec2f57-d180-40c6-a023-e5daec47ad16","userId":"24VniajY1y","transactionId":"iLsL7u_wYj8","status":"requested","isRead":false,"createdAt":"2020-03-29T08:22:55.581Z","modifiedAt":"2020-05-21T18:34:49.377Z"},{"id":"u9dHhEEzInrq","uuid":"381b026a-2d37-40e8-813b-6d1589ef44c0","userId":"24VniajY1y","transactionId":"l92zbUVCcsL","status":"requested","isRead":false,"createdAt":"2020-04-10T13:03:17.512Z","modifiedAt":"2020-05-21T16:43:15.613Z"},{"id":"pXYSkzKbcPVc","uuid":"c6198456-55af-4ba0-8d94-b68c33e34364","userId":"24VniajY1y","transactionId":"oiY6zAoPbUQ","status":"requested","isRead":false,"createdAt":"2020-05-18T15:49:18.101Z","modifiedAt":"2020-05-21T16:18:28.334Z"},{"id":"aMvVFU8FRwl7","uuid":"b05965d4-723b-4244-9044-4c4113d79539","userId":"24VniajY1y","transactionId":"iLsL7u_wYj8","status":"received","isRead":false,"createdAt":"2020-01-13T03:39:37.354Z","modifiedAt":"2020-05-21T12:15:48.186Z"},{"id":"bRqsS3JQVber","uuid":"3611bc99-6379-4c37-a2dc-af4fed404c93","userId":"24VniajY1y","transactionId":"l92zbUVCcsL","status":"received","isRead":false,"createdAt":"2019-07-09T20:06:31.591Z","modifiedAt":"2020-05-21T01:46:31.764Z"},{"id":"lDZElReY86Hr","uuid":"c91859ed-0d21-4177-a7cb-99734a20163f","userId":"24VniajY1y","transactionId":"oiY6zAoPbUQ","status":"received","isRead":false,"createdAt":"2020-04-29T02:32:54.018Z","modifiedAt":"2020-05-21T20:42:25.418Z"},{"id":"m4wfXnOPPWf8","uuid":"758e587a-2f4f-4c90-9cbe-e6f51645b573","userId":"tsHF6_D5oQ","likeId":"heOJ8kL74llw","transactionId":"PPrW38YZtQD","isRead":false,"createdAt":"2020-03-31T19:01:17.456Z","modifiedAt":"2020-05-21T18:21:40.499Z"},{"id":"Cm6sV7uN19kL","uuid":"b537a82e-9fc7-4615-a8f8-93350d05bbbc","userId":"tsHF6_D5oQ","commentId":"qzDGPNLbM7Bj","transactionId":"KXoF_MeiC7O","isRead":false,"createdAt":"2020-01-31T03:29:29.069Z","modifiedAt":"2020-05-21T10:24:58.864Z"},{"id":"LO3D5eVD4fvA","uuid":"ce149070-53c9-4470-b1b7-ee3f9fcfa7a7","userId":"tsHF6_D5oQ","transactionId":"k642Jz2lzhH0","status":"requested","isRead":false,"createdAt":"2019-07-21T09:17:43.282Z","modifiedAt":"2020-05-21T05:34:26.990Z"},{"id":"79z4jqOcogqD","uuid":"55a37e72-c040-4142-ab64-1aca6e4ffac9","userId":"tsHF6_D5oQ","transactionId":"pyOuGfqlLG4","status":"requested","isRead":false,"createdAt":"2019-11-12T13:26:21.327Z","modifiedAt":"2020-05-21T04:56:47.586Z"},{"id":"9rPleuKcwkBK","uuid":"d8deb1c1-fcc8-4778-8c31-ec1a7b2e0ac8","userId":"tsHF6_D5oQ","transactionId":"bADhFXGw7Lt","status":"requested","isRead":false,"createdAt":"2019-08-09T20:03:31.502Z","modifiedAt":"2020-05-21T10:43:58.774Z"},{"id":"lsB3URyk9kDe","uuid":"67b516c3-8c06-4e84-8ee4-8f8a9e472757","userId":"tsHF6_D5oQ","transactionId":"k642Jz2lzhH0","status":"received","isRead":false,"createdAt":"2019-07-27T08:36:20.559Z","modifiedAt":"2020-05-21T19:59:01.517Z"},{"id":"CvbzfuERQ2k1","uuid":"1c5496d6-04cd-4a71-99e9-dbae0a45e871","userId":"tsHF6_D5oQ","transactionId":"pyOuGfqlLG4","status":"received","isRead":false,"createdAt":"2020-01-17T16:15:53.956Z","modifiedAt":"2020-05-21T05:43:55.870Z"},{"id":"FAuf2ezi_mqm","uuid":"f5466b48-f430-434a-b495-9ff6c2618187","userId":"tsHF6_D5oQ","transactionId":"bADhFXGw7Lt","status":"received","isRead":false,"createdAt":"2019-10-19T20:50:49.292Z","modifiedAt":"2020-05-21T21:00:50.192Z"},{"id":"yhc44SzqVI","uuid":"a0613bd9-0a5c-41f4-8f42-f73d17a5986f","userId":"t45AiwidW","transactionId":"Ca9zQm1ct","status":"received","isRead":false,"createdAt":"2023-02-26T18:35:44.478Z","modifiedAt":"2023-02-26T18:35:44.478Z"},{"id":"agQQ6ET9gq","uuid":"e93d3a01-9fa4-468c-86ec-b6c3a49c452f","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","commentId":"JuZUZfW93P","isRead":false,"createdAt":"2023-02-26T18:35:44.572Z","modifiedAt":"2023-02-26T18:35:44.572Z"},{"id":"Fsk9v6R9OO","uuid":"1cda9c9c-82fc-4ff5-8503-816a1d671dbf","userId":"t45Ai... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20230227 00:10:55.991" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:55.984" endtime="20230227 00:10:55.991"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:55.991" endtime="20230227 00:10:55.992"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:55.993" level="INFO">Length is 48</msg>
+<msg timestamp="20230227 00:10:55.994" level="INFO">${total_data} = 48</msg>
+<status status="PASS" starttime="20230227 00:10:55.992" endtime="20230227 00:10:55.994"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:55.994" endtime="20230227 00:10:55.995"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.983" endtime="20230227 00:10:55.995"/>
+</kw>
+<tag>TD-004: Gets remote mock data for notifications</tag>
+<status status="PASS" starttime="20230227 00:10:55.982" endtime="20230227 00:10:55.995"/>
+</test>
+<test id="s1-s1-t5" name="TC-005: Get_remote_mock_data_for_transactions" line="26">
+<kw name="get_mockdata" library="API_resources">
+<arg>transactions</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.082" level="INFO">GET Request : url=http://localhost:3001/testData/transactions 
+ path_url=/testData/transactions 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.082" level="INFO">GET Response : url=http://localhost:3001/testData/transactions 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '252650', 'ETag': 'W/"3daea-YTFOVeLahgR4P0DQ/CZ9X7DhKd4"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"-jCJOEkLh0J","uuid":"0dd2a4e1-7cfd-4acd-bf53-6a377be01c56","source":"RskoB7r4Bic","amount":47410,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":38316,"status":"complete","requestStatus":"","requestResolvedAt":"2020-06-03T01:22:21.937Z","createdAt":"2019-08-24T18:58:38.088Z","modifiedAt":"2020-05-21T11:46:37.285Z"},{"id":"7XaoAWOrn13","uuid":"dabfb473-c5a8-494d-99c4-3defbd30cb3b","source":"RskoB7r4Bic","amount":47212,"description":"Request: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":5250,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-06-16T17:22:10.942Z","modifiedAt":"2020-05-21T08:17:37.859Z"},{"id":"nsX8IwMhAhs","uuid":"7983363a-c994-4b5a-9f9c-b53f793d6e3d","source":"RskoB7r4Bic","amount":1300,"description":"Request: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":47386,"status":"complete","requestStatus":"accepted","requestResolvedAt":"2019-11-14T19:38:21.053Z","createdAt":"2019-07-18T10:58:52.088Z","modifiedAt":"2020-05-21T04:48:05.825Z"},{"id":"VDi4LjqiPrc","uuid":"0b4a0884-1a09-40d9-ae6e-89484547326f","source":"RskoB7r4Bic","amount":16493,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"private","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":41643,"status":"pending","requestStatus":"","requestResolvedAt":"2020-03-23T13:48:37.459Z","createdAt":"2019-12-21T12:39:48.814Z","modifiedAt":"2020-05-21T18:21:22.548Z"},{"id":"d5lCt98elXp","uuid":"e5d0a9ed-2de8-4ebb-b35a-6a91d1ecaa09","source":"RskoB7r4Bic","amount":21825,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":24272,"status":"pending","requestStatus":"","requestResolvedAt":"2020-02-26T18:25:59.062Z","createdAt":"2019-09-14T16:48:16.923Z","modifiedAt":"2020-05-21T04:30:51.927Z"},{"id":"wj0RpBuPixN","uuid":"3282104b-1311-4c52-b075-84d6df5197b8","source":"RskoB7r4Bic","amount":34901,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"private","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":38970,"status":"pending","requestStatus":"","requestResolvedAt":"2020-04-30T14:27:18.685Z","createdAt":"2020-02-29T05:42:25.559Z","modifiedAt":"2020-05-21T11:08:51.934Z"},{"id":"D4a44CsAh2M","uuid":"632f36cd-b558-4fa9-ac54-33310f9df51f","source":"RskoB7r4Bic","amount":39390,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"private","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":12468,"status":"pending","requestStatus":"","requestResolvedAt":"2021-01-07T22:05:52.582Z","createdAt":"2020-02-13T06:25:07.300Z","modifiedAt":"2020-05-21T23:09:51.983Z"},{"id":"Jj8ogIl82v9","uuid":"23cc023b-486b-4c15-b536-d5e424167686","source":"RskoB7r4Bic","amount":25747,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"private","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":7012,"status":"complete","requestStatus":"","requestResolvedAt":"2020-02-01T15:46:11.807Z","createdAt":"2019-08-07T13:40:01.724Z","modifiedAt":"2020-05-21T06:02:58.874Z"},{"id":"gyqiD0fCkK2","uuid":"96b8f184-ebba-4841-a385-a783b712a240","source":"RskoB7r4Bic","amount":6487,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":14237,"status":"complete","requestStatus":"","requestResolvedAt":"2020-03-05T02:53:06.107Z","createdAt":"2019-07-12T18:42:55.413Z","modifiedAt":"2020-05-21T16:03:55.864Z"},{"id":"UOXBzyR8JII","uuid":"a0f4094b-5301-496c-af86-c6dc950945a5","source":"RskoB7r4Bic","amount":31712,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":28008,"status":"complete","requestStatus":"","requestResolvedAt":"2020-04-19T03:33:24.072Z","createdAt":"2019-11-30T04:48:49.409Z","modifiedAt":"2020-05-21T06:13:30.418Z"},{"id":"oHHy4WTqVr6","uuid":"4c1506b3-22cf-42f5-a20e-ef8e9a8470be","source":"RskoB7r4Bic","amount":31106,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":39625,"status":"complete","requestStatus":"","requestResolvedAt":"2021-01-15T14:17:23.865Z","createdAt":"2020-02-07T14:14:44.892Z","modifiedAt":"2020-05-21T12:35:12.739Z"},{"id":"NxiQec9JxOr","uuid":"571277b6-3e3d-4db5-9537-421be4470123","source":"RskoB7r4Bic","amount":4282,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":43860,"status":"complete","requestStatus":"","requestResolvedAt":"2020-03-17T11:19:55.064Z","createdAt":"2019-07-12T12:12:26.271Z","modifiedAt":"2020-05-21T11:00:33.214Z"},{"id":"WuRdScxJ0ge","uuid":"2643c5ee-83f4-40f9-af35-3415b5ba0369","source":"RskoB7r4Bic","amount":47898,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"private","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":33834,"status":"pending","requestStatus":"","requestResolvedAt":"2020-07-15T15:38:01.598Z","createdAt":"2019-11-08T02:42:44.437Z","modifiedAt":"2020-05-21T14:42:45.514Z"},{"id":"l62iaUEro5i","uuid":"053578d7-a91e-40ac-9831-b4bddd368bf1","source":"RskoB7r4Bic","amount":17494,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":41029,"status":"pending","requestStatus":"","requestResolvedAt":"2020-08-10T09:16:10.202Z","createdAt":"2020-03-05T18:30:23.857Z","modifiedAt":"2020-05-21T11:27:25.442Z"},{"id":"vXIOKUBmcGI","uuid":"05041cea-b82c-43ae-a6ab-fe8cdc13b071","source":"RskoB7r4Bic","amount":44546,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":34048,"status":"pending","requestStatus":"","requestResolvedAt":"2020-10-06T13:37:49.779Z","createdAt":"2020-05-20T08:35:12.685Z","modifiedAt":"2020-05-21T18:47:50.440Z"},{"id":"nWQOOizFhJv","uuid":"773f8a18-1294-4428-a196-f1948a875e77","source":"RskoB7r4Bic","amount":18972,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":3984,"status":"complete","requestStatus":"","requestResolvedAt":"2020-02-17T20:07:17.339Z","createdAt":"2019-11-09T10:16:43.994Z","modifiedAt":"2020-05-21T12:11:49.923Z"},{"id":"Eon-RZqewBP","uuid":"7e9f5ab5-68cc-411d-9f26-3dbe640f3c56","source":"RskoB7r4Bic","amount":5626,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":23741,"status":"complete","requestStatus":"","requestResolvedAt":"2020-01-04T05:47:20.471Z","createdAt":"2019-09-14T13:28:54.851Z","modifiedAt":"2020-05-21T19:23:34.424Z"},{"id":"KXoF_MeiC7O","uuid":"d488cf69-0b7c-427a-bb06-620f7a846515","source":"RskoB7r4Bic","amount":18142,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":38981,"status":"complete","requestStatus":"","requestResolvedAt":"2020-06-22T20:30:18.905Z","createdAt":"2019-09-28T06:30:47.975Z","modifiedAt":"2020-05-21T11:45:01.314Z"},{"id":"sW7pzscVsTv","uuid":"6701b053-5973-4cae-8773-1945770cf889","source":"RskoB7r4Bic","amount":11837,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":27525,"status":"pending","requestStatus":"","requestResolvedAt":"2020-08-02T18:05:58.322Z","createdAt":"2020-04-16T08:54:53.728Z","modifiedAt":"2020-05-21T09:35:29.533Z"},{"id":"ZYo6095QYTE","uuid":"11239d29-82ee-4fbe-89b0-7c2fa7c998a7","source":"RskoB7r4Bic","amount":38197,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":11699,"status":"complete","requestStatus":"","requestResolvedAt":"2020-08-29T23:27:29.677Z","createdAt":"2019-11-06T11:42:54.258Z","modifiedAt":"2020-05-21T05:36:39.224Z"},{"id":"9AHWv5nOVT5","uuid":"d87ec855-560f-449d-bb44-80c1be9d2bab","source":"RskoB7r4Bic","amount":48052,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"private","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":47920,"status":"complete","requestStatus":"","requestResolvedAt":"2019-12-27T12:26:21.021Z","createdAt":"2019-07-13T04:23:32.767Z","modifiedAt":"2020-05-21T11:12:26.380Z"},{"id":"vNz-4JyAJxa","uuid":"418288be-be3c-4185-9828-4b7659c452c1","source":"RskoB7r4Bic","amount":3819,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":2241,"status":"complete","requestStatus":"","requestResolvedAt":"2019-10-16T20:16:22.186Z","createdAt":"2019-07-07T06:00:55.410Z","modifiedAt":"2020-05-21T07:37:47.186Z"},{"id":"-NEjx3a-9Oh","uuid":"646fe3e6-5109-45cc-b025-ec14bab8307e","source":"RskoB7r4Bic","amount":32252,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"private","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":44819,"status":"complete","requestStatus":"","requestResolvedAt":"2020-04-24T22:18:58.460Z","createdAt":"2020-01-16T00:02:07.836Z","modifiedAt":"2020-05-21T04:42:17.704Z"},{"id":"4g5a8rEuLzx","uuid":"81e0e027-5c1a-4287-bfaf-43f55cd8cff8","source":"RskoB7r4Bic","amount":34433,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":8098,"status":"complete","requestStatus":"","requestResolvedAt":"2020-08-18T15:49:11.751... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20230227 00:10:56.083" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.005" endtime="20230227 00:10:56.083"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.083" endtime="20230227 00:10:56.085"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.090" level="INFO">Length is 603</msg>
+<msg timestamp="20230227 00:10:56.091" level="INFO">${total_data} = 603</msg>
+<status status="PASS" starttime="20230227 00:10:56.086" endtime="20230227 00:10:56.091"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.091" endtime="20230227 00:10:56.093"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.997" endtime="20230227 00:10:56.093"/>
+</kw>
+<tag>TD-005: Gets remote mock data for transactions</tag>
+<status status="PASS" starttime="20230227 00:10:55.996" endtime="20230227 00:10:56.094"/>
+</test>
+<test id="s1-s1-t6" name="TC-006: Get_remote_mock_data_for_likes" line="30">
+<kw name="get_mockdata" library="API_resources">
+<arg>likes</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.153" level="INFO">GET Request : url=http://localhost:3001/testData/likes 
+ path_url=/testData/likes 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.153" level="INFO">GET Response : url=http://localhost:3001/testData/likes 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2199', 'ETag': 'W/"897-0GXsVnmwzsjMlSMyqr1XEUmYaQI"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"MC54o2D5r9aU","uuid":"745e203b-1246-4e1c-a76e-d053c9f932ed","userId":"t45AiwidW","transactionId":"WIHpqM0xpcTx","createdAt":"2020-04-20T12:02:27.515Z","modifiedAt":"2020-05-21T06:23:07.619Z"},{"id":"SkJcAw6wxbwp","uuid":"e95441ca-c34f-4da5-a7c5-12b761d0a4ce","userId":"t45AiwidW","transactionId":"UFOuuh53Fc8p","createdAt":"2019-10-22T20:35:48.390Z","modifiedAt":"2020-05-21T12:45:36.480Z"},{"id":"gZAk_O19jbso","uuid":"218d4330-3c66-42ea-8eb8-ea36dc344531","userId":"qywYp6hS0U","transactionId":"tGR-SQFF_eKe","createdAt":"2020-01-26T20:31:58.263Z","modifiedAt":"2020-05-21T21:14:22.563Z"},{"id":"smN67IclINLf","uuid":"24b24db1-0b20-4bfa-8804-62a926b2c9de","userId":"qywYp6hS0U","transactionId":"rI56rDA0f7lY","createdAt":"2019-09-22T14:40:26.243Z","modifiedAt":"2020-05-21T12:22:16.771Z"},{"id":"wI4DQCHvKTYg","uuid":"c815d1f4-bf19-4f46-b356-877744c9a9fe","userId":"bDjUb4ir5O","transactionId":"K9XgQYqtkAr","createdAt":"2020-05-10T17:24:11.197Z","modifiedAt":"2020-05-21T22:58:36.981Z"},{"id":"-gdQmt-KLpbb","uuid":"3c2d779c-b4f0-47d2-b4c5-cb173d7ba0ae","userId":"bDjUb4ir5O","transactionId":"nsX8IwMhAhs","createdAt":"2020-04-30T04:58:11.975Z","modifiedAt":"2020-05-21T00:19:10.472Z"},{"id":"heOJ8kL74llw","uuid":"4e162beb-ba2a-497c-95b7-6a8c169fe6b3","userId":"24VniajY1y","transactionId":"PPrW38YZtQD","createdAt":"2019-10-28T21:35:01.172Z","modifiedAt":"2020-05-21T19:55:36.573Z"},{"id":"rjtxxnM3X9GG","uuid":"ac19b212-9562-49c3-a008-0dbdc37e5a49","userId":"24VniajY1y","transactionId":"yHdqpXlhN4H","createdAt":"2020-03-31T13:23:29.756Z","modifiedAt":"2020-05-21T23:41:50.375Z"},{"id":"f4D4wHM-G64y","uuid":"70b812b2-fd22-4912-9a1f-5cd7e1cc2be8","userId":"tsHF6_D5oQ","transactionId":"fIby6oSriaK","createdAt":"2019-06-18T18:33:52.660Z","modifiedAt":"2020-05-21T23:30:48.024Z"},{"id":"7wtu4XnD71Ya","uuid":"c18c8684-7d44-434a-882f-091fb118f564","userId":"tsHF6_D5oQ","transactionId":"SXHgQh46s7A","createdAt":"2020-05-07T03:37:29.711Z","modifiedAt":"2020-05-21T02:32:06.555Z"},{"id":"h-i02CW9ky","uuid":"4365b282-412f-4108-a6a8-92c3d392f462","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.620Z","modifiedAt":"2023-02-26T18:35:44.620Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.154" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.096" endtime="20230227 00:10:56.154"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.154" endtime="20230227 00:10:56.155"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.156" level="INFO">Length is 11</msg>
+<msg timestamp="20230227 00:10:56.156" level="INFO">${total_data} = 11</msg>
+<status status="PASS" starttime="20230227 00:10:56.155" endtime="20230227 00:10:56.156"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.156" endtime="20230227 00:10:56.157"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.095" endtime="20230227 00:10:56.157"/>
+</kw>
+<tag>TD-006: Gets remote mock data for likes</tag>
+<status status="PASS" starttime="20230227 00:10:56.094" endtime="20230227 00:10:56.157"/>
+</test>
+<test id="s1-s1-t7" name="TC-007: Get_remote_mock_data_for_comments" line="34">
+<kw name="get_mockdata" library="API_resources">
+<arg>comments</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.205" level="INFO">GET Request : url=http://localhost:3001/testData/comments 
+ path_url=/testData/comments 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.205" level="INFO">GET Response : url=http://localhost:3001/testData/comments 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2552', 'ETag': 'W/"9f8-H2ZjhreMW37qAYF1GSLCIV6MdPo"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"K3HLpKcGKDiP","uuid":"4f2adee3-dd86-4948-bdc3-3e44b18206e7","content":"inventore perferendis soluta","userId":"t45AiwidW","transactionId":"lPUBZKlc4MLR","createdAt":"2019-07-03T01:35:58.062Z","modifiedAt":"2020-05-21T22:14:55.334Z"},{"id":"lP6NRuX-dvGq","uuid":"54008a7f-002c-44b5-a7b7-f6b8411f4198","content":"amet aut odio","userId":"t45AiwidW","transactionId":"_WUzmYf9cMFV","createdAt":"2019-06-18T03:19:53.014Z","modifiedAt":"2020-05-21T05:00:23.799Z"},{"id":"K4abZaDmj24N","uuid":"2a735a2e-1aef-4d51-bc2d-409ebdd5d65a","content":"quae dolorum vel","userId":"qywYp6hS0U","transactionId":"eDAEBxflaESz","createdAt":"2019-11-02T01:25:40.566Z","modifiedAt":"2020-05-21T02:20:13.790Z"},{"id":"plnvDmNQ4CHL","uuid":"ee9026dd-2e1a-4588-90dc-02a323450ea5","content":"nisi molestiae dolorem","userId":"qywYp6hS0U","transactionId":"-V8tfQmmbvin","createdAt":"2019-11-16T02:06:11.743Z","modifiedAt":"2020-05-21T10:58:06.398Z"},{"id":"gMCKplYPZics","uuid":"156a1c29-b403-4ded-8560-8f63ce00ac20","content":"optio ipsum aspernatur","userId":"bDjUb4ir5O","transactionId":"zIjBNAdH6FCB","createdAt":"2019-09-02T12:35:14.179Z","modifiedAt":"2020-05-21T22:29:55.197Z"},{"id":"qzDGPNLbM7Bj","uuid":"21b525dc-2215-4263-bc07-ce35383c2227","content":"magnam quis sed","userId":"bDjUb4ir5O","transactionId":"KXoF_MeiC7O","createdAt":"2019-11-26T01:56:15.554Z","modifiedAt":"2020-05-21T04:49:11.523Z"},{"id":"YarNHJR_5Rh6","uuid":"a1d06556-3ddd-49f1-b9f1-448d69640d6d","content":"non mollitia sit","userId":"24VniajY1y","transactionId":"6MCm9R1dkLk_","createdAt":"2019-06-11T06:20:57.602Z","modifiedAt":"2020-05-21T17:18:17.770Z"},{"id":"_besy03NS1Q5","uuid":"344fb5ec-997e-47c4-b04d-1b08531eadfd","content":"itaque est aliquid","userId":"24VniajY1y","transactionId":"KXoF_MeiC7O","createdAt":"2019-12-18T21:07:44.719Z","modifiedAt":"2020-05-21T11:34:58.858Z"},{"id":"v_9sDCgLX8_n","uuid":"bd1f0143-4834-4730-bcad-89ca518db4c4","content":"et ad veritatis","userId":"tsHF6_D5oQ","transactionId":"KXoF_MeiC7O","createdAt":"2019-11-29T06:59:26.648Z","modifiedAt":"2020-05-21T21:55:18.865Z"},{"id":"rSDvw2A_87Hh","uuid":"64f15895-5fd8-481a-8a41-79f2f091e17c","content":"qui explicabo voluptatum","userId":"tsHF6_D5oQ","transactionId":"2BHqb4lfWmiA","createdAt":"2019-11-07T07:03:42.068Z","modifiedAt":"2020-05-21T06:06:10.434Z"},{"id":"JuZUZfW93P","uuid":"436b2566-4fb4-4201-983e-19d2f38bfab5","content":"Send you the share","userId":"iIo5YbNZk","transactionId":"Ca9zQm1ct","createdAt":"2023-02-26T18:35:44.566Z","modifiedAt":"2023-02-26T18:35:44.566Z"}]} 
+ </msg>
+<msg timestamp="20230227 00:10:56.206" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.159" endtime="20230227 00:10:56.206"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.206" endtime="20230227 00:10:56.207"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.208" level="INFO">Length is 11</msg>
+<msg timestamp="20230227 00:10:56.208" level="INFO">${total_data} = 11</msg>
+<status status="PASS" starttime="20230227 00:10:56.207" endtime="20230227 00:10:56.208"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.208" endtime="20230227 00:10:56.209"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.158" endtime="20230227 00:10:56.210"/>
+</kw>
+<tag>TD-007: Gets remote mock data for comments</tag>
+<status status="PASS" starttime="20230227 00:10:56.158" endtime="20230227 00:10:56.210"/>
+</test>
+<test id="s1-s1-t8" name="TC-008: Get_remote_mock_data_for_banktransfers" line="38">
+<kw name="get_mockdata" library="API_resources">
+<arg>banktransfers</arg>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${get_response}</var>
+<arg>session2</arg>
+<arg>testData/${relative_URL}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230227 00:10:56.334" level="INFO">GET Request : url=http://localhost:3001/testData/banktransfers 
+ path_url=/testData/banktransfers 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate, br', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AE0XMMYwWkkzYRqb3nwikPiafuqhH5cS0.%2BxONTiW8aaJMjmuZKhZ43rHauRIxYbYoD4q6n9HFNeY'} 
+ body=None 
+ </msg>
+<msg timestamp="20230227 00:10:56.334" level="INFO">GET Response : url=http://localhost:3001/testData/banktransfers 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '13031', 'ETag': 'W/"32e7-TK8+ff6lpR+camBq32HXv0DCkto"', 'Date': 'Sun, 26 Feb 2023 18:40:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"WgiYCFrxjGIo","uuid":"2c07eba1-2027-476c-be42-4bb56b78187a","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":40101,"type":"deposit","transactionId":"jjxVhrcgwW-","createdAt":"2019-06-07T19:01:48.699Z","modifiedAt":"2020-05-21T06:01:23.277Z"},{"id":"TF3IvHYc0nML","uuid":"ef2b0cce-472a-4ea4-908e-a25a522e4883","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":42858,"type":"withdrawal","transactionId":"jjxVhrcgwW-","createdAt":"2019-06-02T01:47:50.847Z","modifiedAt":"2020-05-21T17:49:44.120Z"},{"id":"E_DtDW0TuRxz","uuid":"d000ce8f-02f6-4d8e-9b40-1085cb82e89f","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":49719,"type":"deposit","transactionId":"T_wxjLS6I4ef","createdAt":"2020-05-07T02:57:20.294Z","modifiedAt":"2020-05-21T18:31:50.704Z"},{"id":"6-AL2ZAXVWyj","uuid":"261fbd2a-982a-41f5-ae17-5427ee02b028","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":14588,"type":"withdrawal","transactionId":"T_wxjLS6I4ef","createdAt":"2019-05-31T11:26:34.538Z","modifiedAt":"2020-05-21T16:37:11.823Z"},{"id":"yEvLcf-OjtSJ","uuid":"687273ba-7c54-4b69-a1ac-9730bcc2f0f9","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":10516,"type":"deposit","transactionId":"VImPGjIMPrv","createdAt":"2019-12-16T13:27:21.382Z","modifiedAt":"2020-05-21T19:11:12.726Z"},{"id":"bKs5eOpDGfGH","uuid":"61021a37-abc3-478b-9b82-149c4ba18277","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":17229,"type":"withdrawal","transactionId":"VImPGjIMPrv","createdAt":"2019-09-30T11:59:15.649Z","modifiedAt":"2020-05-21T12:33:33.702Z"},{"id":"T4YhOkrUrf-v","uuid":"7e6f9a87-7cf5-4668-bcaf-837b07a02ebf","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":38076,"type":"deposit","transactionId":"Wtyzh9aNjk7","createdAt":"2020-01-28T03:34:22.538Z","modifiedAt":"2020-05-21T18:35:25.487Z"},{"id":"coDnLWoeB3DE","uuid":"a916b165-30cd-42e7-86f9-7766cd05018b","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":34810,"type":"withdrawal","transactionId":"Wtyzh9aNjk7","createdAt":"2020-01-26T01:14:59.157Z","modifiedAt":"2020-05-21T22:56:13.367Z"},{"id":"BXVikfD3N0vl","uuid":"ca655a4b-6a88-442c-a160-4b08ab4581e1","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":35555,"type":"deposit","transactionId":"sW7pzscVsTv","createdAt":"2019-10-11T09:13:04.539Z","modifiedAt":"2020-05-21T17:57:04.542Z"},{"id":"4MDl5ESgZDz1","uuid":"3dbb82d4-d4b5-40a3-8e08-0f570f3b64bc","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":10042,"type":"withdrawal","transactionId":"sW7pzscVsTv","createdAt":"2019-07-22T19:24:58.477Z","modifiedAt":"2020-05-21T22:24:13.267Z"},{"id":"670Axdtfeqkr","uuid":"9aa7ea1d-3ecc-43de-a361-4e698644651b","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":15569,"type":"deposit","transactionId":"183VHWyuQMS","createdAt":"2019-06-22T12:21:56.430Z","modifiedAt":"2020-05-21T10:26:10.246Z"},{"id":"oU22yMfW6fkY","uuid":"30e3f415-d7db-4fcf-b851-51593d362b2c","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":15618,"type":"withdrawal","transactionId":"183VHWyuQMS","createdAt":"2019-09-04T23:09:55.367Z","modifiedAt":"2020-05-21T12:16:47.001Z"},{"id":"Ggull1kCVF4O","uuid":"0c0f3b2b-4d3a-4716-adfd-7a9b6d601e70","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":47327,"type":"deposit","transactionId":"O_veFsts0n3","createdAt":"2019-06-29T00:34:40.022Z","modifiedAt":"2020-05-21T08:42:18.049Z"},{"id":"sV5HsAzaC73g","uuid":"ee9f49f2-2e71-474f-af93-aaebe05a0e1a","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":28362,"type":"withdrawal","transactionId":"O_veFsts0n3","createdAt":"2020-04-30T01:27:35.435Z","modifiedAt":"2020-05-21T15:38:45.368Z"},{"id":"T_mowxtEmrfa","uuid":"e6ed67b3-1ce5-42cb-b5bc-3b0975ecab9c","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":41685,"type":"deposit","transactionId":"fR5BCkPk_3J","createdAt":"2020-01-06T21:48:57.159Z","modifiedAt":"2020-05-21T20:21:52.345Z"},{"id":"gfVHGv184T8z","uuid":"594b3f93-134b-40f0-ad44-8129b7dcf625","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":42591,"type":"withdrawal","transactionId":"fR5BCkPk_3J","createdAt":"2019-06-13T09:14:47.587Z","modifiedAt":"2020-05-21T05:47:57.103Z"},{"id":"400uY0TBdIVv","uuid":"1bdae27a-bbe4-4246-8ac7-61f467d9019a","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":20609,"type":"deposit","transactionId":"9cY2Ox0Nv6G","createdAt":"2019-07-27T21:58:31.830Z","modifiedAt":"2020-05-21T07:40:08.975Z"},{"id":"US-rQfETKd36","uuid":"0f972e16-8ac2-422a-b064-dd3e519634b2","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":7899,"type":"withdrawal","transactionId":"9cY2Ox0Nv6G","createdAt":"2019-10-20T12:19:15.832Z","modifiedAt":"2020-05-21T17:52:31.671Z"},{"id":"SissI2ojUtgR","uuid":"18ad24ce-b28c-43dc-bb34-63e248817d9a","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":49423,"type":"deposit","transactionId":"NAqTYSLpGe4","createdAt":"2019-09-28T22:50:16.202Z","modifiedAt":"2020-05-21T20:42:16.897Z"},{"id":"LCq5F7VDbpzW","uuid":"10465233-a369-4dac-bed5-6a77bd052c11","userId":"qywYp6hS0U","source":"lWfxENA5ZNy","amount":9399,"type":"withdrawal","transactionId":"NAqTYSLpGe4","createdAt":"2019-06-17T07:25:09.177Z","modifiedAt":"2020-05-21T00:58:30.390Z"},{"id":"LtUCZdrUzjif","uuid":"3536ceda-ffb2-4849-b073-134562913c80","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":10155,"type":"deposit","transactionId":"XG1zRjuRdEsw","createdAt":"2020-02-09T04:11:51.806Z","modifiedAt":"2020-05-21T23:29:34.932Z"},{"id":"M7Een-tzo23H","uuid":"c16360e2-414d-46af-bf40-db808e44b224","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":12858,"type":"withdrawal","transactionId":"XG1zRjuRdEsw","createdAt":"2019-06-08T12:59:37.479Z","modifiedAt":"2020-05-21T05:54:04.461Z"},{"id":"hMLgXZ6Hiei5","uuid":"6d0babac-e661-4828-bcd2-b8ac57777918","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":16734,"type":"deposit","transactionId":"vNnMGdPNfPjO","createdAt":"2019-12-30T00:40:36.488Z","modifiedAt":"2020-05-21T17:07:28.021Z"},{"id":"MjHVQmeEtt1I","uuid":"a1dd3635-ac81-475d-83ef-877bf502e596","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":9792,"type":"withdrawal","transactionId":"vNnMGdPNfPjO","createdAt":"2020-03-04T07:19:47.253Z","modifiedAt":"2020-05-21T18:45:20.743Z"},{"id":"43LZ1hKpcIb5","uuid":"9550d452-7b36-4651-be01-ad966594bfef","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":30610,"type":"deposit","transactionId":"4AvM8cN1DdS","createdAt":"2019-11-19T14:52:53.866Z","modifiedAt":"2020-05-21T17:17:20.523Z"},{"id":"j80zBl-3HNf4","uuid":"51e7abec-88fc-4689-8296-a91a7d08a73a","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":42784,"type":"withdrawal","transactionId":"4AvM8cN1DdS","createdAt":"2019-10-02T21:18:11.485Z","modifiedAt":"2020-05-21T13:40:00.390Z"},{"id":"mQcBAykNxqw9","uuid":"690acd4d-35b5-4f15-8818-b09b5afa0c42","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":38257,"type":"deposit","transactionId":"eosWcYRrzdKm","createdAt":"2020-03-10T00:33:02.548Z","modifiedAt":"2020-05-21T01:48:23.113Z"},{"id":"b0digVnixSTH","uuid":"2a9877f9-f188-4564-a383-e29274d8f1fd","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":47189,"type":"withdrawal","transactionId":"eosWcYRrzdKm","createdAt":"2020-01-25T11:32:59.183Z","modifiedAt":"2020-05-21T02:35:56.468Z"},{"id":"yvuDT-tA9UV2","uuid":"dca0bd5b-7c43-4526-ae8b-f4d049481567","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":10376,"type":"deposit","transactionId":"T0Bh0lAQKJ6R","createdAt":"2019-07-24T03:37:17.838Z","modifiedAt":"2020-05-21T06:19:06.277Z"},{"id":"6qpbv6G8qj6w","uuid":"fa9dba87-f738-4a94-bcf0-4fd1344fd410","userId":"bDjUb4ir5O","source":"u9hwi1YwtqW","amount":42866,"type":"withdrawal","transactionId":"T0Bh0lAQKJ6R","createdAt":"2019-11-26T20:53:06.620Z","modifiedAt":"2020-05-21T15:46:58.287Z"},{"id":"Da7RhGLKIl2U","uuid":"f05c9342-1e8d-4ede-8e38-3c06b51fc15a","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":47337,"type":"deposit","transactionId":"PO7oOEcVzdob","createdAt":"2020-03-08T03:20:57.670Z","modifiedAt":"2020-05-21T14:22:33.300Z"},{"id":"iSZBHdsA8GRO","uuid":"6ce0ec51-5db1-480f-853e-969b228bd3e8","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":28783,"type":"withdrawal","transactionId":"PO7oOEcVzdob","createdAt":"2019-08-20T21:14:47.793Z","modifiedAt":"2020-05-21T03:47:42.669Z"},{"id":"A7atd9WDVkvU","uuid":"1000835b-2584-474c-94a6-917f2758c85c","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":41778,"type":"deposit","transactionId":"RW-Z6ceq1xnE","createdAt":"2020-01-01T19:12:03.262Z","modifiedAt":"2020-05-21T12:21:01.078Z"},{"id":"W6dBbIE3uJP6","uuid":"ced0e652-8694-4bc4-ac61-2e35ac87eecc","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":20849,"type":"withdrawal","transactionId":"RW-Z6ceq1xnE","createdAt":"2019-10-22T08:37:55.052Z","modifiedAt":"2020-05-21T06:00:06.833Z"},{"id":"smWbKPeVHGlg","uuid":"b9bb6482-4dfb-4690-9f40-d90e73ff260d","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":7126,"type":"deposit","transactionId":"j50lw_sKsIta","createdAt":"2019-06-15T15:45:52.518Z","modifiedAt":"2020-05-21T11:21:20.463Z"},{"id":"SKvIJFP11WIi","uuid":"b18060e2-70ab-432a-bd5d-c301c9a7f3e1","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":28177,"type":"withdrawal","transactionId":"j50lw_sKsIta","createdAt":"2020-02-13T12:53:17.054Z","modifiedAt":"2020-05-21T03:55:25.880Z"},{"id":"53ASq7YV3upZ","uuid":"6feb46b3-2d6f-4282-bf8e-926f01143171","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":45076,"type":"deposit","transactionId":"IWztbtwF2WpG","createdAt":"2019-08-21T02:15:17.777Z","modifiedAt":"2020-05-21T13:15:43.168Z"},{"id":"OyyX1rJp9eL2","uuid":"79eb1669-8465-4f22-9d94-508336983f52","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":24447,"type":"withdrawal","transactionId":"IWztbtwF2WpG","createdAt":"2019-06-03T14:39:10.923Z","modifiedAt":"2020-05-21T08:53:09.742Z"},{"id":"5csbZ79VZVIq","uuid":"42756edd-a99b-4265-a488-1b95aec69834","userId":"24VniajY1y","source":"rLn5MeHrzAc","amount":4168,"type":"deposit","transactionId":"BZCvlONdShzk","createdAt":"2020-04-07T09:20:58.872Z","modifiedAt":"2020-05-21T23:20:30.674Z"},{"id":"Ly-DlAZEEfsx",... (set the log level to DEBUG or TRACE to see the full content) 
+ </msg>
+<msg timestamp="20230227 00:10:56.334" level="INFO">${get_response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230227 00:10:56.212" endtime="20230227 00:10:56.334"/>
+</kw>
+<kw name="Request Should Be Successful" library="RequestsLibrary">
+<doc>Fails if response status code is a client or server error (4xx, 5xx).</doc>
+<status status="PASS" starttime="20230227 00:10:56.334" endtime="20230227 00:10:56.335"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${total_data}</var>
+<arg>${get_response.json()['results']}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230227 00:10:56.336" level="INFO">Length is 51</msg>
+<msg timestamp="20230227 00:10:56.336" level="INFO">${total_data} = 51</msg>
+<status status="PASS" starttime="20230227 00:10:56.335" endtime="20230227 00:10:56.337"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<arg>${total_data}&gt;0</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" starttime="20230227 00:10:56.337" endtime="20230227 00:10:56.337"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:56.211" endtime="20230227 00:10:56.338"/>
+</kw>
+<tag>TD-008: Gets remote mock data for banktransfers</tag>
+<status status="PASS" starttime="20230227 00:10:56.210" endtime="20230227 00:10:56.338"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.653" endtime="20230227 00:10:56.338"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.630" endtime="20230227 00:10:56.340"/>
+</suite>
+<statistics>
+<total>
+<stat pass="8" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">TD-001: Gets remote mock data for users</stat>
+<stat pass="1" fail="0" skip="0">TD-002: Gets remote mock data for contacts</stat>
+<stat pass="1" fail="0" skip="0">TD-003: Gets remote mock data for bankaccounts</stat>
+<stat pass="1" fail="0" skip="0">TD-004: Gets remote mock data for notifications</stat>
+<stat pass="1" fail="0" skip="0">TD-005: Gets remote mock data for transactions</stat>
+<stat pass="1" fail="0" skip="0">TD-006: Gets remote mock data for likes</stat>
+<stat pass="1" fail="0" skip="0">TD-007: Gets remote mock data for comments</stat>
+<stat pass="1" fail="0" skip="0">TD-008: Gets remote mock data for banktransfers</stat>
+</tag>
+<suite>
+<stat pass="8" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="8" fail="0" skip="0" id="s1-s1" name="Api Testdata">Suites.Api Testdata</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

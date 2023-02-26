@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.673" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="NewTransaction" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\NewTransaction.robot">
+<kw name="Hit_url" library="Signup_Signin_kw" type="SETUP">
+<arg>${Signin_data}[signin_url]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:10:55.026" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signin'.</msg>
+<status status="PASS" starttime="20230227 00:10:55.025" endtime="20230227 00:11:00.066"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:00.067" endtime="20230227 00:11:00.069"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:00.069" endtime="20230227 00:11:00.190"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.023" endtime="20230227 00:11:00.191"/>
+</kw>
+<test id="s1-s1-t1" name="BA-001:Transaction_fieldValidation_bankname" line="14">
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${signup_data}[uname]</arg>
+<arg>${signup_data}[pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:00.194" level="INFO">Typing text 'Katharina_Bernier' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:00.194" endtime="20230227 00:11:00.628"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:00.629" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:00.676" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:00.793" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:00.629" endtime="20230227 00:11:00.793"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:00.794" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:00.794" endtime="20230227 00:11:00.909"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:00.193" endtime="20230227 00:11:00.909"/>
+</kw>
+<kw name="Transaction_fieldvalidation" library="Transaction_keywords">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[new_transact]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:00.911" level="INFO">Clicking element '//*[@href="/transaction/new"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:00.911" endtime="20230227 00:11:01.422"/>
+</kw>
+<kw name="search_for_contact" library="Transaction_keywords">
+<arg>${signup_data}[firstName2]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>timeout=40s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:01.423" endtime="20230227 00:11:01.438"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${contact}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.439" level="INFO">Typing text 'Arely' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.438" endtime="20230227 00:11:01.574"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[first_result]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.575" level="INFO">Clicking element '//*[@data-test="users-list"]/li[1]'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.575" endtime="20230227 00:11:01.652"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:01.422" endtime="20230227 00:11:01.652"/>
+</kw>
+<kw name="validate_error_msg" library="Transaction_keywords">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[note]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.654" level="INFO">Clicking element '//input[@name="description"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.653" endtime="20230227 00:11:01.724"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${bank_transaction}[amount_invalid_input_msg]</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:01.739" level="INFO">Current page contains text 'Please enter a valid amount'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.724" endtime="20230227 00:11:01.739"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[amount]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.741" level="INFO">Clicking element 'id:amount'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.740" endtime="20230227 00:11:01.806"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${bank_transaction}[note_invalid_input_msg]</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:01.823" level="INFO">Current page contains text 'Please enter a note'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.806" endtime="20230227 00:11:01.823"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Transaction}[request]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:01.823" endtime="20230227 00:11:01.842"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Transaction}[pay]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:01.842" endtime="20230227 00:11:01.860"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:01.652" endtime="20230227 00:11:01.860"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:00.909" endtime="20230227 00:11:01.860"/>
+</kw>
+<tag>BA-001:Transaction_fieldValidation_bankname</tag>
+<status status="PASS" starttime="20230227 00:11:00.191" endtime="20230227 00:11:01.862"/>
+</test>
+<test id="s1-s1-t2" name="BA-002:Create_new_payment_transaction" line="19">
+<kw name="Create_new_transaction" library="Transaction_keywords">
+<kw name="input_to_transaction_page" library="Transaction_keywords">
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[amount]</arg>
+<arg>timeout=40s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:01.864" endtime="20230227 00:11:01.871"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[amount]</arg>
+<arg>${bankTransfer_data}[amount]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.872" level="INFO">Typing text '2000' into text field 'id:amount'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.872" endtime="20230227 00:11:01.977"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[note]</arg>
+<arg>${bank_transaction}[note]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:01.978" level="INFO">Typing text 'lunch share1' into text field '//input[@name="description"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:01.977" endtime="20230227 00:11:02.149"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${Transaction}[request]</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230227 00:11:02.149" endtime="20230227 00:11:02.190"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${Transaction}[pay]</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230227 00:11:02.190" endtime="20230227 00:11:02.219"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:01.863" endtime="20230227 00:11:02.219"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[pay]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.220" level="INFO">Clicking element '//*[contains(@data-test,"submit-payment")]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.219" endtime="20230227 00:11:02.324"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Paid $2,000.00 for ${bank_transaction}[note]</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:02.346" level="INFO">Current page contains text 'Paid $2,000.00 for lunch share1'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.324" endtime="20230227 00:11:02.346"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[return_to_transactions]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:02.375" level="INFO">Current page contains element '//*[@data-test="new-transaction-return-to-transactions"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.347" endtime="20230227 00:11:02.376"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[create_another_transaction]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:02.388" level="INFO">Current page contains element '//*[@data-test="new-transaction-create-another-transaction"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.376" endtime="20230227 00:11:02.388"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:01.863" endtime="20230227 00:11:02.388"/>
+</kw>
+<tag>BA-002:Create_new_payment_transaction</tag>
+<status status="PASS" starttime="20230227 00:11:01.862" endtime="20230227 00:11:02.388"/>
+</test>
+<test id="s1-s1-t3" name="BA-003:Create_new_payment_request" line="23">
+<kw name="create_another_transaction_as_a_request" library="Transaction_keywords">
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[create_another_transaction]</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:02.392" endtime="20230227 00:11:02.400"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[create_another_transaction]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.401" level="INFO">Clicking element '//*[@data-test="new-transaction-create-another-transaction"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.400" endtime="20230227 00:11:02.458"/>
+</kw>
+<kw name="payment_request" library="Transaction_keywords">
+<kw name="search_for_contact" library="Transaction_keywords">
+<arg>${bankTransfer_data}[contact1]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>timeout=40s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:02.460" endtime="20230227 00:11:02.470"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${contact}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.471" level="INFO">Typing text 'Kaylin' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.470" endtime="20230227 00:11:02.550"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[first_result]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.550" level="INFO">Clicking element '//*[@data-test="users-list"]/li[1]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.550" endtime="20230227 00:11:02.602"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:02.459" endtime="20230227 00:11:02.603"/>
+</kw>
+<kw name="input_to_transaction_page" library="Transaction_keywords">
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[amount]</arg>
+<arg>timeout=40s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:02.603" endtime="20230227 00:11:02.610"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[amount]</arg>
+<arg>${bankTransfer_data}[amount]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.611" level="INFO">Typing text '2000' into text field 'id:amount'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.610" endtime="20230227 00:11:02.705"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[note]</arg>
+<arg>${bank_transaction}[note]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.706" level="INFO">Typing text 'lunch share1' into text field '//input[@name="description"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.705" endtime="20230227 00:11:02.938"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${Transaction}[request]</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230227 00:11:02.938" endtime="20230227 00:11:02.974"/>
+</kw>
+<kw name="Wait Until Element Is Enabled" library="Selenium2Library">
+<arg>${Transaction}[pay]</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20230227 00:11:02.975" endtime="20230227 00:11:03.011"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:02.603" endtime="20230227 00:11:03.012"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[request]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:03.013" level="INFO">Clicking element '//*[contains(@data-test,"submit-request")]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.012" endtime="20230227 00:11:03.113"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Requested $2,000.00 for ${bank_transaction}[note]</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:03.172" level="INFO">Current page contains text 'Requested $2,000.00 for lunch share1'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.114" endtime="20230227 00:11:03.172"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[return_to_transactions]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:03.183" level="INFO">Current page contains element '//*[@data-test="new-transaction-return-to-transactions"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.172" endtime="20230227 00:11:03.183"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[create_another_transaction]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:03.195" level="INFO">Current page contains element '//*[@data-test="new-transaction-create-another-transaction"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.184" endtime="20230227 00:11:03.195"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:02.458" endtime="20230227 00:11:03.196"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:02.391" endtime="20230227 00:11:03.197"/>
+</kw>
+<tag>BA-003:Create_new_payment_request</tag>
+<status status="PASS" starttime="20230227 00:11:02.391" endtime="20230227 00:11:03.197"/>
+</test>
+<test id="s1-s1-t4" name="BA-004:Validate_return_to_transactions_button" line="27">
+<kw name="return_to_transactions" library="Transaction_keywords">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[return_to_transactions]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:03.200" level="INFO">Clicking element '//*[@data-test="new-transaction-return-to-transactions"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.199" endtime="20230227 00:11:03.316"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${Transaction}[amount_filter]</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:03.316" endtime="20230227 00:11:03.345"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[date_filter]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:03.364" level="INFO">Current page contains element '//*[@data-test="transaction-list-filter-date-range-button"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.346" endtime="20230227 00:11:03.364"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:03.198" endtime="20230227 00:11:03.364"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:03.364" endtime="20230227 00:11:05.509"/>
+</kw>
+<tag>BA-004:Bank_account_fieldValidation_bankname</tag>
+<status status="PASS" starttime="20230227 00:11:03.198" endtime="20230227 00:11:05.510"/>
+</test>
+<test id="s1-s1-t5" name="BA-005:Verify_the_Paid_transaction" line="32">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signin_url]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:11:05.515" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signin'.</msg>
+<status status="PASS" starttime="20230227 00:11:05.514" endtime="20230227 00:11:10.099"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:10.099" endtime="20230227 00:11:10.102"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:10.102" endtime="20230227 00:11:10.228"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:05.512" endtime="20230227 00:11:10.228"/>
+</kw>
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${bankTransfer_data}[contact1_un]</arg>
+<arg>${signup_data}[pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:10.231" level="INFO">Typing text 'Allie2' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:10.230" endtime="20230227 00:11:10.496"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:10.498" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:10.555" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:10.706" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:10.496" endtime="20230227 00:11:10.706"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:10.707" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:10.706" endtime="20230227 00:11:10.843"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:10.229" endtime="20230227 00:11:10.844"/>
+</kw>
+<kw name="verify_the_paid_transaction" library="Transaction_keywords">
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:12.847" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:10.845" endtime="20230227 00:11:12.848"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[record2]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:12.848" level="INFO">Clicking element '(//*[@data-test="transaction-list"]//li//div[contains(@class,"MuiGrid-container")])[2]'.</msg>
+<status status="PASS" starttime="20230227 00:11:12.848" endtime="20230227 00:11:12.906"/>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>Transaction Detail</arg>
+<arg>timeout=45s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:12.907" endtime="20230227 00:11:12.944"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>$2,000.00</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:12.962" level="INFO">Current page contains text '$2,000.00'.</msg>
+<status status="PASS" starttime="20230227 00:11:12.944" endtime="20230227 00:11:12.962"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:10.844" endtime="20230227 00:11:12.963"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:12.963" endtime="20230227 00:11:15.043"/>
+</kw>
+<tag>BA-005:Verify_the_paid_transaction</tag>
+<status status="PASS" starttime="20230227 00:11:05.511" endtime="20230227 00:11:15.043"/>
+</test>
+<test id="s1-s1-t6" name="BA-006:Verify_the_Requested_transaction" line="39">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signin_url]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:11:15.046" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signin'.</msg>
+<status status="PASS" starttime="20230227 00:11:15.046" endtime="20230227 00:11:19.679"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:19.679" endtime="20230227 00:11:19.681"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:19.682" endtime="20230227 00:11:19.794"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:15.045" endtime="20230227 00:11:19.794"/>
+</kw>
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${bankTransfer_data}[contact2_un]</arg>
+<arg>${signup_data}[pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:19.797" level="INFO">Typing text 'Tavares_Barrows' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:19.796" endtime="20230227 00:11:20.125"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:20.126" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:20.182" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:20.341" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:20.126" endtime="20230227 00:11:20.341"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:20.342" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:20.341" endtime="20230227 00:11:20.468"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:19.795" endtime="20230227 00:11:20.469"/>
+</kw>
+<kw name="verify_the_requested_transaction" library="Transaction_keywords">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[record1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:20.470" level="INFO">Clicking element '(//*[@data-test="transaction-list"]//li//div[contains(@class,"MuiGrid-container")])[1]'.</msg>
+<status status="PASS" starttime="20230227 00:11:20.469" endtime="20230227 00:11:21.110"/>
+</kw>
+<kw name="Wait Until Page Contains" library="Selenium2Library">
+<arg>Transaction Detail</arg>
+<arg>timeout=45s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:21.111" endtime="20230227 00:11:21.156"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>$2,000.00</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:21.175" level="INFO">Current page contains text '$2,000.00'.</msg>
+<status status="PASS" starttime="20230227 00:11:21.157" endtime="20230227 00:11:21.175"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:20.469" endtime="20230227 00:11:21.176"/>
+</kw>
+<kw name="accept_payment" library="Transaction_keywords">
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Transaction}[accept_payment]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:21.190" level="INFO">Current page contains element '//*[contains(@data-test,"transaction-accept-request")]'.</msg>
+<status status="PASS" starttime="20230227 00:11:21.176" endtime="20230227 00:11:21.190"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[accept_payment]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:21.192" level="INFO">Clicking element '//*[contains(@data-test,"transaction-accept-request")]'.</msg>
+<status status="PASS" starttime="20230227 00:11:21.191" endtime="20230227 00:11:21.249"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:21.176" endtime="20230227 00:11:21.249"/>
+</kw>
+<tag>BA-006:Verify_the_Requested_transaction</tag>
+<status status="PASS" starttime="20230227 00:11:15.043" endtime="20230227 00:11:21.250"/>
+</test>
+<test id="s1-s1-t7" name="BA-007:Search_contacts_by_attributes" line="46">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signin_url]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:11:21.254" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signin'.</msg>
+<status status="PASS" starttime="20230227 00:11:21.253" endtime="20230227 00:11:25.675"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:25.675" endtime="20230227 00:11:25.678"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:25.679" endtime="20230227 00:11:25.788"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:21.252" endtime="20230227 00:11:25.788"/>
+</kw>
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${bankTransfer_data}[contact1_un]</arg>
+<arg>${signup_data}[pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:25.789" level="INFO">Typing text 'Allie2' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:25.789" endtime="20230227 00:11:25.966"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:25.967" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:26.012" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:26.149" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:25.967" endtime="20230227 00:11:26.150"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:26.151" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:26.150" endtime="20230227 00:11:26.263"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:25.788" endtime="20230227 00:11:26.264"/>
+</kw>
+<kw name="navigate_to_transaction" library="Transaction_keywords">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Transaction}[new_transaction_button]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:26.266" level="INFO">Clicking element '//*[@data-test="nav-top-new-transaction"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:26.265" endtime="20230227 00:11:26.991"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:26.264" endtime="20230227 00:11:26.991"/>
+</kw>
+<kw name="Search_contacts" library="Transaction_keywords">
+<arg>${bank_transaction}[Fname]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${input_Data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:26.994" level="INFO">Typing text 'Arely' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:26.993" endtime="20230227 00:11:27.178"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:29.184" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:27.179" endtime="20230227 00:11:29.185"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="users-list"]//li[1]//span[contains(text(),'${input_Data}')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:29.201" level="INFO">Current page contains element '//*[@data-test="users-list"]//li[1]//span[contains(text(),'Arely')]'.</msg>
+<status status="PASS" starttime="20230227 00:11:29.185" endtime="20230227 00:11:29.201"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:29.202" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //*[@data-test="user-list-search-input"] element.</msg>
+<msg timestamp="20230227 00:11:29.499" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:29.499" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:29.499" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:29.499" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:29.499" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:29.201" endtime="20230227 00:11:29.520"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:26.992" endtime="20230227 00:11:29.520"/>
+</kw>
+<kw name="Search_contacts" library="Transaction_keywords">
+<arg>${bank_transaction}[Lname]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${input_Data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:29.521" level="INFO">Typing text 'Kertzmann' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:29.520" endtime="20230227 00:11:29.598"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:31.610" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:29.598" endtime="20230227 00:11:31.610"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="users-list"]//li[1]//span[contains(text(),'${input_Data}')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:31.622" level="INFO">Current page contains element '//*[@data-test="users-list"]//li[1]//span[contains(text(),'Kertzmann')]'.</msg>
+<status status="PASS" starttime="20230227 00:11:31.610" endtime="20230227 00:11:31.623"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:31.623" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //*[@data-test="user-list-search-input"] element.</msg>
+<msg timestamp="20230227 00:11:31.908" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:31.908" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:31.908" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:31.908" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:31.908" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:31.623" endtime="20230227 00:11:31.923"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:29.520" endtime="20230227 00:11:31.923"/>
+</kw>
+<kw name="Search_contacts" library="Transaction_keywords">
+<arg>${bank_transaction}[email]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${input_Data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:31.924" level="INFO">Typing text 'Aniya_Powlowski36@hotmail.com' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:31.924" endtime="20230227 00:11:32.021"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:34.030" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:32.021" endtime="20230227 00:11:34.030"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="users-list"]//li[1]//span[contains(text(),'${input_Data}')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:34.040" level="INFO">Current page contains element '//*[@data-test="users-list"]//li[1]//span[contains(text(),'Aniya_Powlowski36@hotmail.com')]'.</msg>
+<status status="PASS" starttime="20230227 00:11:34.030" endtime="20230227 00:11:34.041"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:34.041" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //*[@data-test="user-list-search-input"] element.</msg>
+<msg timestamp="20230227 00:11:34.327" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:34.327" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:34.327" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:34.328" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:34.328" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:34.041" endtime="20230227 00:11:34.338"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:31.923" endtime="20230227 00:11:34.338"/>
+</kw>
+<kw name="Search_contacts" library="Transaction_keywords">
+<arg>${bank_transaction}[phone_num]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${input_Data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:34.340" level="INFO">Typing text '537-041-4355' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:34.339" endtime="20230227 00:11:34.394"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:36.403" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:34.395" endtime="20230227 00:11:36.403"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="users-list"]//li[1]//span[contains(text(),'${input_Data}')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:36.418" level="INFO">Current page contains element '//*[@data-test="users-list"]//li[1]//span[contains(text(),'537-041-4355')]'.</msg>
+<status status="PASS" starttime="20230227 00:11:36.403" endtime="20230227 00:11:36.418"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:36.418" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //*[@data-test="user-list-search-input"] element.</msg>
+<msg timestamp="20230227 00:11:36.706" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:36.706" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:36.706" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:36.707" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:36.707" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:36.418" endtime="20230227 00:11:36.720"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:34.338" endtime="20230227 00:11:36.720"/>
+</kw>
+<kw name="Search_contacts" library="Transaction_keywords">
+<arg>${bankTransfer_data}[contact2_un]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>${input_Data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:36.721" level="INFO">Typing text 'Tavares_Barrows' into text field '//*[@data-test="user-list-search-input"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:36.721" endtime="20230227 00:11:36.767"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:38.769" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:36.767" endtime="20230227 00:11:38.769"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="users-list"]//li[1]//span[contains(text(),'${input_Data}')]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:38.788" level="INFO">Current page contains element '//*[@data-test="users-list"]//li[1]//span[contains(text(),'Tavares_Barrows')]'.</msg>
+<status status="PASS" starttime="20230227 00:11:38.769" endtime="20230227 00:11:38.789"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${Transaction}[search_transaction]</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:38.789" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //*[@data-test="user-list-search-input"] element.</msg>
+<msg timestamp="20230227 00:11:39.086" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:39.086" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:39.086" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:39.086" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:39.086" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:38.789" endtime="20230227 00:11:39.103"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:36.720" endtime="20230227 00:11:39.103"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:39.103" endtime="20230227 00:11:41.168"/>
+</kw>
+<tag>BA-007:Search_contacts_by_attributes</tag>
+<status status="PASS" starttime="20230227 00:11:21.250" endtime="20230227 00:11:41.169"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.707" endtime="20230227 00:11:41.169"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.685" endtime="20230227 00:11:41.171"/>
+</suite>
+<statistics>
+<total>
+<stat pass="7" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">BA-001:Transaction_fieldValidation_bankname</stat>
+<stat pass="1" fail="0" skip="0">BA-002:Create_new_payment_transaction</stat>
+<stat pass="1" fail="0" skip="0">BA-003:Create_new_payment_request</stat>
+<stat pass="1" fail="0" skip="0">BA-004:Bank_account_fieldValidation_bankname</stat>
+<stat pass="1" fail="0" skip="0">BA-005:Verify_the_paid_transaction</stat>
+<stat pass="1" fail="0" skip="0">BA-006:Verify_the_Requested_transaction</stat>
+<stat pass="1" fail="0" skip="0">BA-007:Search_contacts_by_attributes</stat>
+</tag>
+<suite>
+<stat pass="7" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="7" fail="0" skip="0" id="s1-s1" name="NewTransaction">Suites.NewTransaction</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

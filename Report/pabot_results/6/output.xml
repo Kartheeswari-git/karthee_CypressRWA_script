@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.9.7 on win32)" generated="20230227 00:10:54.650" rpa="false" schemaversion="3">
+<suite id="s1" name="Suites">
+<suite id="s1-s1" name="Signup Signin" source="C:\Users\Karthee\PycharmProjects\Experiments\EMIS_Assesment\Testcases\Signup_Signin.robot">
+<test id="s1-s1-t1" name="Signup-001:SignupValidation" line="9">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signup]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:10:55.018" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signup'.</msg>
+<status status="PASS" starttime="20230227 00:10:55.018" endtime="20230227 00:11:00.062"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:00.063" endtime="20230227 00:11:00.066"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:00.066" endtime="20230227 00:11:00.175"/>
+</kw>
+<status status="PASS" starttime="20230227 00:10:55.017" endtime="20230227 00:11:00.176"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation_empty" library="Signup_Signin_kw">
+<arg>${Signup}[fname]</arg>
+<arg>${signup_data}[firstName]</arg>
+<arg>${Validation_msg}[fname_empty]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:00.176" endtime="20230227 00:11:00.200"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:00.202" level="INFO">Typing text 'Karthee1' into text field '//input[@id="firstName"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:00.200" endtime="20230227 00:11:00.525"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:02.534" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:00.526" endtime="20230227 00:11:02.534"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:02.536" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //input[@id="firstName"] element.</msg>
+<msg timestamp="20230227 00:11:02.818" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:02.818" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:02.818" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:02.818" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:02.818" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:02.534" endtime="20230227 00:11:02.851"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:02.851" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.851" endtime="20230227 00:11:02.938"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:02.958" level="INFO">Current page contains text 'First Name is required'.</msg>
+<status status="PASS" starttime="20230227 00:11:02.938" endtime="20230227 00:11:02.959"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:02.959" endtime="20230227 00:11:02.993"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:00.176" endtime="20230227 00:11:02.993"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation_empty" library="Signup_Signin_kw">
+<arg>${Signup}[lname]</arg>
+<arg>${signup_data}[lastName]</arg>
+<arg>${Validation_msg}[lname_empty]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:02.995" endtime="20230227 00:11:03.012"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:03.013" level="INFO">Typing text 'S' into text field '//input[@id="lastName"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:03.012" endtime="20230227 00:11:03.138"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:05.154" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:03.138" endtime="20230227 00:11:05.154"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:05.156" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //input[@id="lastName"] element.</msg>
+<msg timestamp="20230227 00:11:05.437" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:05.437" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:05.437" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:05.437" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:05.437" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:05.154" endtime="20230227 00:11:05.470"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:05.471" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:05.471" endtime="20230227 00:11:05.528"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:05.557" level="INFO">Current page contains text 'Last Name is required'.</msg>
+<status status="PASS" starttime="20230227 00:11:05.529" endtime="20230227 00:11:05.557"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:05.557" endtime="20230227 00:11:05.578"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:02.993" endtime="20230227 00:11:05.579"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation_empty" library="Signup_Signin_kw">
+<arg>${Signup}[uname]</arg>
+<arg>${signup_data}[username]</arg>
+<arg>${Validation_msg}[uname_empty]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:05.580" endtime="20230227 00:11:05.599"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:05.601" level="INFO">Typing text 'kartheeswari1311@gmail.com' into text field '//input[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:05.600" endtime="20230227 00:11:06.288"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:08.303" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:06.289" endtime="20230227 00:11:08.303"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:08.305" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //input[@id="username"] element.</msg>
+<msg timestamp="20230227 00:11:08.587" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:08.587" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:08.587" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:08.587" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:08.587" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:08.303" endtime="20230227 00:11:08.610"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:08.611" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:08.610" endtime="20230227 00:11:08.663"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:08.684" level="INFO">Current page contains text 'Username is required'.</msg>
+<status status="PASS" starttime="20230227 00:11:08.663" endtime="20230227 00:11:08.684"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:08.684" endtime="20230227 00:11:08.702"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:05.579" endtime="20230227 00:11:08.703"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation_empty" library="Signup_Signin_kw">
+<arg>${Signup}[pwd]</arg>
+<arg>${signup_data}[password]</arg>
+<arg>${Validation_msg}[pwd_empty]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:08.704" endtime="20230227 00:11:08.719"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:08.721" level="INFO">Typing text 'Welcome123#' into text field '//input[@id="password"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:08.719" endtime="20230227 00:11:08.973"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:10.987" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:08.973" endtime="20230227 00:11:10.987"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:10.990" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //input[@id="password"] element.</msg>
+<msg timestamp="20230227 00:11:11.290" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:11.290" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:11.290" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:11.290" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:11.290" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:10.988" endtime="20230227 00:11:11.326"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:11.327" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:11.327" endtime="20230227 00:11:11.399"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:11.429" level="INFO">Current page contains text 'Enter your password'.</msg>
+<status status="PASS" starttime="20230227 00:11:11.399" endtime="20230227 00:11:11.429"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:11.430" endtime="20230227 00:11:11.457"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:08.703" endtime="20230227 00:11:11.458"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation_empty" library="Signup_Signin_kw">
+<arg>${Signup}[confirm_pwd]</arg>
+<arg>${signup_data}[password]</arg>
+<arg>${Validation_msg}[confirm_pwd_empty]</arg>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>timeout=30s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:11.459" endtime="20230227 00:11:11.484"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:11.485" level="INFO">Typing text 'Welcome123#' into text field '//input[@id="confirmPassword"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:11.484" endtime="20230227 00:11:11.809"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:13.820" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:11.809" endtime="20230227 00:11:13.820"/>
+</kw>
+<kw name="Press Keys" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>CTRL+A+BACKSPACE</arg>
+<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
+<msg timestamp="20230227 00:11:13.821" level="INFO">Sending key(s) ('CTRL+A+BACKSPACE',) to //input[@id="confirmPassword"] element.</msg>
+<msg timestamp="20230227 00:11:14.102" level="INFO">Pressing special key CONTROL down.</msg>
+<msg timestamp="20230227 00:11:14.103" level="INFO">Sending key A</msg>
+<msg timestamp="20230227 00:11:14.103" level="INFO">Pressing special key BACKSPACE down.</msg>
+<msg timestamp="20230227 00:11:14.103" level="INFO">Releasing special key CONTROL.</msg>
+<msg timestamp="20230227 00:11:14.103" level="INFO">Releasing special key BACKSPACE.</msg>
+<status status="PASS" starttime="20230227 00:11:13.820" endtime="20230227 00:11:14.124"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:14.125" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.124" endtime="20230227 00:11:14.167"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:14.205" level="INFO">Current page contains text 'Confirm your password'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.168" endtime="20230227 00:11:14.205"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:14.205" endtime="20230227 00:11:14.220"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:11.458" endtime="20230227 00:11:14.221"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation" library="Signup_Signin_kw">
+<arg>${Signup}[pwd]</arg>
+<arg>${signup_data}[invalid_pwd]</arg>
+<arg>${Validation_msg}[pwd_invalid_msg]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:14.222" level="INFO">Typing text 'ab' into text field '//input[@id="password"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.222" endtime="20230227 00:11:14.302"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:14.303" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.302" endtime="20230227 00:11:14.342"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:14.356" level="INFO">Current page contains text 'Password must contain at least 4 characters'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.342" endtime="20230227 00:11:14.356"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:14.356" endtime="20230227 00:11:14.371"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:14.221" endtime="20230227 00:11:14.371"/>
+</kw>
+<kw name="Signup_fieldLevel_Validation" library="Signup_Signin_kw">
+<arg>${Signup}[confirm_pwd]</arg>
+<arg>${signup_data}[password]</arg>
+<arg>${Validation_msg}[confirm_pwd_wrong]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${input_locator}</arg>
+<arg>${input_data}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:14.373" level="INFO">Typing text 'Welcome123#' into text field '//input[@id="confirmPassword"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.372" endtime="20230227 00:11:14.544"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@fill-rule="evenodd"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:14.546" level="INFO">Clicking element '//*[@fill-rule="evenodd"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.545" endtime="20230227 00:11:14.582"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>${msg}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:14.600" level="INFO">Current page contains text 'Password does not match'.</msg>
+<status status="PASS" starttime="20230227 00:11:14.583" endtime="20230227 00:11:14.600"/>
+</kw>
+<kw name="Element Should Be Disabled" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Verifies that element identified by ``locator`` is disabled.</doc>
+<status status="PASS" starttime="20230227 00:11:14.601" endtime="20230227 00:11:14.616"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:14.371" endtime="20230227 00:11:14.616"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:14.616" endtime="20230227 00:11:16.705"/>
+</kw>
+<tag>Signup-001:SignupValidation</tag>
+<status status="PASS" starttime="20230227 00:10:55.016" endtime="20230227 00:11:16.705"/>
+</test>
+<test id="s1-s1-t2" name="Signup-002:CreateValidNewUSer" line="20">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signup]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:11:16.708" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signup'.</msg>
+<status status="PASS" starttime="20230227 00:11:16.707" endtime="20230227 00:11:21.649"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:21.649" endtime="20230227 00:11:21.652"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:21.653" endtime="20230227 00:11:21.771"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:16.707" endtime="20230227 00:11:21.772"/>
+</kw>
+<kw name="SignupValidation" library="Signup_Signin_kw">
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Signup}[fname]</arg>
+<arg>${signup_data}[firstName]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:21.773" level="INFO">Typing text 'Karthee1' into text field '//input[@id="firstName"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:21.772" endtime="20230227 00:11:22.002"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Signup}[lname]</arg>
+<arg>${signup_data}[lastName1]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:22.004" level="INFO">Typing text 'Johns' into text field '//input[@id="lastName"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:22.003" endtime="20230227 00:11:22.265"/>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<arg>${Signup}[uname]</arg>
+<arg>${signup_data}[firstName]</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:22.267" level="INFO">Typing text 'Karthee1' into text field '//input[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:22.265" endtime="20230227 00:11:22.521"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>${Signup}[pwd]</arg>
+<arg>${signup_data}[password]</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:22.522" level="INFO">Typing password into text field '//input[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:22.586" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:22.820" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:22.521" endtime="20230227 00:11:22.820"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>${Signup}[confirm_pwd]</arg>
+<arg>${signup_data}[password]</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:22.821" level="INFO">Typing password into text field '//input[@id="confirmPassword"]'.</msg>
+<msg timestamp="20230227 00:11:22.869" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:23.122" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:22.820" endtime="20230227 00:11:23.123"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${Signup}[signup_btn]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:23.124" level="INFO">Clicking element '//*[@data-test="signup-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:23.123" endtime="20230227 00:11:23.250"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:21.772" endtime="20230227 00:11:23.250"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:23.250" endtime="20230227 00:11:25.381"/>
+</kw>
+<tag>Signup-002:CreateValidNewUSer</tag>
+<status status="PASS" starttime="20230227 00:11:16.706" endtime="20230227 00:11:25.381"/>
+</test>
+<test id="s1-s1-t3" name="Signin-001:SigninPage UI Validation" line="25">
+<kw name="Hit_url" library="Signup_Signin_kw">
+<arg>${Signin_data}[signin_url]</arg>
+<kw name="Open Browser" library="Selenium2Library">
+<arg>${url}</arg>
+<arg>headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20230227 00:11:25.386" level="INFO">Opening browser 'headlesschrome' to base url 'http://localhost:3000/signin'.</msg>
+<status status="PASS" starttime="20230227 00:11:25.386" endtime="20230227 00:11:29.860"/>
+</kw>
+<kw name="Set Selenium Implicit Wait" library="Selenium2Library">
+<arg>15s</arg>
+<doc>Sets the implicit wait value used by Selenium.</doc>
+<status status="PASS" starttime="20230227 00:11:29.861" endtime="20230227 00:11:29.863"/>
+</kw>
+<kw name="Set Window Size" library="Selenium2Library">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" starttime="20230227 00:11:29.864" endtime="20230227 00:11:29.974"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:25.385" endtime="20230227 00:11:29.974"/>
+</kw>
+<kw name="Signin_UI_Validation" library="Signup_Signin_kw">
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:34.989" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:29.975" endtime="20230227 00:11:34.989"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="Selenium2Library">
+<arg>${signin}[signin_title]</arg>
+<arg>timeout=60s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20230227 00:11:34.989" endtime="20230227 00:11:35.002"/>
+</kw>
+<kw name="Title Should Be" library="Selenium2Library">
+<arg>Cypress Real World App</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20230227 00:11:35.006" level="INFO">Page title is 'Cypress Real World App'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.002" endtime="20230227 00:11:35.006"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${signin}[signin_title]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.013" level="INFO">Current page contains element '//h1[text()="Sign in"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.007" endtime="20230227 00:11:35.013"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Signup}[uname]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.023" level="INFO">Current page contains element '//input[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.013" endtime="20230227 00:11:35.024"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Signup}[pwd]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.036" level="INFO">Current page contains element '//input[@id="password"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.024" endtime="20230227 00:11:35.036"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-remember-me"]/following::span[text()="Remember me"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.046" level="INFO">Current page contains element '//*[@data-test="signin-remember-me"]/following::span[text()="Remember me"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.036" endtime="20230227 00:11:35.046"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${Signup}[signin_btn]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.056" level="INFO">Current page contains element '//*[@data-test="signup"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.046" endtime="20230227 00:11:35.056"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${signin}[signup_txt]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.066" level="INFO">Current page contains element '//*[text()="Don't have an account? Sign Up"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.056" endtime="20230227 00:11:35.066"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${signin}[cypress_logo]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.075" level="INFO">Current page contains element '//*[@href="https://cypress.io"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.066" endtime="20230227 00:11:35.075"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:29.974" endtime="20230227 00:11:35.076"/>
+</kw>
+<tag>Signin-001:Validating page text and elements in signin page</tag>
+<status status="PASS" starttime="20230227 00:11:25.384" endtime="20230227 00:11:35.076"/>
+</test>
+<test id="s1-s1-t4" name="Signin-002:SigninPage Fieldlevel Validation" line="30">
+<kw name="w/o_un_pwd" library="Signup_Signin_kw">
+<kw name="Click Element" library="Selenium2Library">
+<arg>${signin}[signin_btn]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:35.077" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.077" endtime="20230227 00:11:35.132"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-username"]//p[text()="Username is required"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:35.142" level="INFO">Current page contains element '//*[@data-test="signin-username"]//p[text()="Username is required"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.132" endtime="20230227 00:11:35.142"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:35.077" endtime="20230227 00:11:35.142"/>
+</kw>
+<tag>Signin-002:SigninPage Fieldlevel validation</tag>
+<status status="PASS" starttime="20230227 00:11:35.076" endtime="20230227 00:11:35.142"/>
+</test>
+<test id="s1-s1-t5" name="Signin-003:SigninPage Credential Validation" line="34">
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${Signin_data}[invalid_un]</arg>
+<arg>${Signin_data}[invalid_pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:35.145" level="INFO">Typing text 'iuyfx' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.144" endtime="20230227 00:11:35.261"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:35.262" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:35.301" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:35.393" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:35.261" endtime="20230227 00:11:35.394"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:35.395" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:35.394" endtime="20230227 00:11:35.446"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:35.144" endtime="20230227 00:11:35.446"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:40.455" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:35.446" endtime="20230227 00:11:40.455"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Username or password is invalid</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:40.474" level="INFO">Current page contains text 'Username or password is invalid'.</msg>
+<status status="PASS" starttime="20230227 00:11:40.456" endtime="20230227 00:11:40.474"/>
+</kw>
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${Signin_data}[valid_un]</arg>
+<arg>${Signin_data}[invalid_pwd]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:40.475" level="INFO">Typing text 'kartheeswari1311@gmail.com' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:40.475" endtime="20230227 00:11:40.660"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:40.661" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:40.699" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:40.776" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:40.661" endtime="20230227 00:11:40.776"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:40.777" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:40.776" endtime="20230227 00:11:40.823"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:40.474" endtime="20230227 00:11:40.823"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20230227 00:11:45.828" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20230227 00:11:40.824" endtime="20230227 00:11:45.828"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Username or password is invalid</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:45.849" level="INFO">Current page contains text 'Username or password is invalid'.</msg>
+<status status="PASS" starttime="20230227 00:11:45.828" endtime="20230227 00:11:45.849"/>
+</kw>
+<tag>Signin-003:Invalid Credentials validation</tag>
+<status status="PASS" starttime="20230227 00:11:35.143" endtime="20230227 00:11:45.849"/>
+</test>
+<test id="s1-s1-t6" name="Signin-004:SigninPage Validation" line="43">
+<kw name="Signin" library="Signup_Signin_kw">
+<arg>${signup_data}[firstName]</arg>
+<arg>${signup_data}[password]</arg>
+<kw name="Input Text" library="Selenium2Library">
+<arg>//*[@id="username"]</arg>
+<arg>${uname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:45.850" level="INFO">Typing text 'Karthee1' into text field '//*[@id="username"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:45.850" endtime="20230227 00:11:45.945"/>
+</kw>
+<kw name="Input Password" library="Selenium2Library">
+<arg>//*[@id="password"]</arg>
+<arg>${pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:45.946" level="INFO">Typing password into text field '//*[@id="password"]'.</msg>
+<msg timestamp="20230227 00:11:45.975" level="INFO">Temporally setting log level to: NONE</msg>
+<msg timestamp="20230227 00:11:46.085" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20230227 00:11:45.945" endtime="20230227 00:11:46.086"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="signin-submit"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:46.086" level="INFO">Clicking element '//*[@data-test="signin-submit"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:46.086" endtime="20230227 00:11:46.132"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:45.850" endtime="20230227 00:11:46.132"/>
+</kw>
+<kw name="verify_signin" library="Signup_Signin_kw">
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>//*[@role="dialog"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20230227 00:11:46.422" level="INFO">Current page contains element '//*[@role="dialog"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:46.134" endtime="20230227 00:11:46.422"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Get Started with Real World App</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:46.440" level="INFO">Current page contains text 'Get Started with Real World App'.</msg>
+<status status="PASS" starttime="20230227 00:11:46.422" endtime="20230227 00:11:46.441"/>
+</kw>
+<kw name="Page Should Contain" library="Selenium2Library">
+<arg>Real World App requires a Bank Account to perform transactions.</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20230227 00:11:46.455" level="INFO">Current page contains text 'Real World App requires a Bank Account to perform transactions.'.</msg>
+<status status="PASS" starttime="20230227 00:11:46.441" endtime="20230227 00:11:46.455"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>//*[@data-test="user-onboarding-next"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20230227 00:11:46.455" level="INFO">Clicking element '//*[@data-test="user-onboarding-next"]'.</msg>
+<status status="PASS" starttime="20230227 00:11:46.455" endtime="20230227 00:11:46.541"/>
+</kw>
+<status status="PASS" starttime="20230227 00:11:46.133" endtime="20230227 00:11:46.541"/>
+</kw>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20230227 00:11:46.541" endtime="20230227 00:11:48.599"/>
+</kw>
+<tag>Signin-004:Valid Credentials validation</tag>
+<status status="PASS" starttime="20230227 00:11:45.849" endtime="20230227 00:11:48.600"/>
+</test>
+<status status="PASS" starttime="20230227 00:10:54.683" endtime="20230227 00:11:48.603"/>
+</suite>
+<status status="PASS" starttime="20230227 00:10:54.660" endtime="20230227 00:11:48.608"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Signin-001:Validating page text and elements in signin page</stat>
+<stat pass="1" fail="0" skip="0">Signin-002:SigninPage Fieldlevel validation</stat>
+<stat pass="1" fail="0" skip="0">Signin-003:Invalid Credentials validation</stat>
+<stat pass="1" fail="0" skip="0">Signin-004:Valid Credentials validation</stat>
+<stat pass="1" fail="0" skip="0">Signup-001:SignupValidation</stat>
+<stat pass="1" fail="0" skip="0">Signup-002:CreateValidNewUSer</stat>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="Suites">Suites</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1" name="Signup Signin">Suites.Signup Signin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
