@@ -3,9 +3,7 @@ Library     Selenium2Library
 Library     RequestsLibrary
 Library     Collections
 Variables   ../PageObject/Data.py
-Resource   ../Resouces/API_resources.robot
-
-*** Variables ***
+Resource   ../Resources/API_resources.robot
 
 *** Test Cases ***
 TD-001: Get_remote_mock_data_for_users

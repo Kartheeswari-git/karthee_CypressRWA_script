@@ -22,6 +22,9 @@ Create_new_transaction
 create_another_transaction_as_a_request
     wait until page contains element        ${Transaction}[create_another_transaction]
     click element       ${Transaction}[create_another_transaction]
+    payment_request
+
+payment_request
     search_for_contact      ${bankTransfer_data}[contact1]
     input_to_transaction_page
     click element       ${Transaction}[request]
@@ -62,15 +65,6 @@ verify_the_paid_transaction
     page should contain     $2,000.00
 #    page should contain element     //*[@data-test="sidenav-user-balance" and text()="$1,118.05"]
 
-send_comment
-    press keys      //input[contains(@data-test,"transaction-comment")]     Thanks for sending+ENTER
-    wait until page contains element        //*[@data-test="comments-list"]//li//div//span[text()="Thanks for sending"]
-    page should contain element     //*[@data-test="comments-list"]//li//div//span[text()="Thanks for sending"]
-
-Hit_like
-    click element   //*[contains(@data-test,"transaction-like-button")]
-    ${like_count}=      get text        //div[contains(@data-test,"transaction-like-count")]
-    should be equal     ${like_count}       1
 
 verify_the_requested_transaction
     click element       ${Transaction}[record1]

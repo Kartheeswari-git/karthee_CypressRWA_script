@@ -1,13 +1,9 @@
 *** Settings ***
 Library     Selenium2Library
-Resource    ../Resouces/Signup_Signin_kw.robot
+Resource    ../Resources/Signup_Signin_kw.robot
 Variables   ../PageObject/Variable.py
 Variables   ../PageObject/Data.py
-*** Variables ***
 
-
-
-*** Keywords ***
 
 *** Test Cases ***
 Signup-001:SignupValidation

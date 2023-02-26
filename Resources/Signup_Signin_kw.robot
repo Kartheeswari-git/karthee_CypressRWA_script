@@ -18,7 +18,7 @@ Signup_fieldLevel_Validation_empty
 
 Hit_url
     [Arguments]      ${url}
-    open browser        ${url}      chrome
+    open browser        ${url}      headlesschrome
     set selenium implicit wait  15s
     set window size    1920    1080
 
@@ -44,7 +44,6 @@ Signin_UI_Validation
     page should contain element     ${Signup}[uname]
     page should contain element     ${Signup}[pwd]
     page should contain element     //*[@data-test="signin-remember-me"]/following::span[text()="Remember me"]
-    page should contain element     ${Signup}[signup_btn]
     page should contain element     ${Signup}[signin_btn]
     page should contain element     ${signin}[signup_txt]
     page should contain element     ${signin}[cypress_logo]

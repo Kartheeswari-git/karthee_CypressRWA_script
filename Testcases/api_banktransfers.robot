@@ -3,10 +3,7 @@ Library     Selenium2Library
 Library     RequestsLibrary
 Library     Collections
 Variables   ../PageObject/Data.py
-Resource   ../Resouces/API_resources.robot
-
-*** Variables ***
-
+Resource   ../Resources/API_resources.robot
 
 *** Test Cases ***
 BT-001: Signup_RWA

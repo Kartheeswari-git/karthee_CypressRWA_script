@@ -1,16 +1,14 @@
 *** Settings ***
 Library     Selenium2Library
-Resource    ../Resouces/Signup_Signin_kw.robot
-Resource    ../Resouces/bankaccounts_resources.robot
-Resource    ../Resouces/Transaction_keywords.robot
+Resource    ../Resources/Signup_Signin_kw.robot
+Resource    ../Resources/bankaccounts_resources.robot
+Resource    ../Resources/Transaction_keywords.robot
 Variables   ../PageObject/Variable.py
 Variables   ../PageObject/Data.py
 Suite Setup     Hit_url     ${Signin_data}[signin_url]
-*** Variables ***
 
 
 
-*** Keywords ***
 
 *** Test Cases ***
 BA-001:Transaction_fieldValidation_bankname
