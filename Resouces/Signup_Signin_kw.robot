@@ -18,7 +18,7 @@ Signup_fieldLevel_Validation_empty
 
 Hit_url
     [Arguments]      ${url}
-    open browser        ${url}      headlesschrome
+    open browser        ${url}      chrome
     set selenium implicit wait  15s
     set window size    1920    1080
 

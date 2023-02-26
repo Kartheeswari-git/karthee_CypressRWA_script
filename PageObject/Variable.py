@@ -27,3 +27,21 @@ bankaccount={
 side_icons={
     'bank_ac':'//*[@data-test="sidenav-bankaccounts"]',
 }
+Transaction={
+    'new_transact':'//*[@href="/transaction/new"]',
+    'search_transaction':'//*[@data-test="user-list-search-input"]',
+    'first_result':'//*[@data-test="users-list"]/li[1]',
+    'amount':'id:amount',
+    'note':'//input[@name="description"]',
+    'pay':'//*[contains(@data-test,"submit-payment")]',
+    'request':'//*[contains(@data-test,"submit-request")]',
+    'return_to_transactions':'//*[@data-test="new-transaction-return-to-transactions"]',
+    'create_another_transaction':'//*[@data-test="new-transaction-create-another-transaction"]',
+    'amount_filter':'//*[@data-test="transaction-list-filter-amount-range-button"]',
+    'date_filter':'//*[@data-test="transaction-list-filter-date-range-button"]',
+    'new_transaction_button':'//*[@data-test="nav-top-new-transaction"]',
+    'accept_payment':'//*[contains(@data-test,"transaction-accept-request")]',
+    'record1':'(//*[@data-test="transaction-list"]//li//div[contains(@class,"MuiGrid-container")])[1]',
+    'record2': '(//*[@data-test="transaction-list"]//li//div[contains(@class,"MuiGrid-container")])[2]',
+
+}

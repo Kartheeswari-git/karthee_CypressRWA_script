@@ -22,6 +22,10 @@ bankTransfer_data={
     'bankname1': 'Canara Bank',
     'account_number_xpected':'975318642',
     'routing_number_xpected':'987654321',
+    'contact1':'Kaylin',
+    'contact1_un':'Allie2',
+    'contact2_un':'Tavares_Barrows',
+
 
 }
 signup_data={
@@ -53,3 +57,12 @@ Validation_msg={
 
 }
 
+bank_transaction={
+    'amount_invalid_input_msg':'Please enter a valid amount',
+    'note_invalid_input_msg':'Please enter a note',
+    'note':'lunch share1',
+    'Fname':'Arely',
+    'Lname':'Kertzmann',
+    'email':'Aniya_Powlowski36@hotmail.com',
+    'phone_num':'537-041-4355',
+}
